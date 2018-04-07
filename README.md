@@ -36,14 +36,14 @@ these names to help us describe the movements of a single joint made up of many 
 
 
 ##### Pitch:
-Aircraft: nose up or down about an axis from wing to wing
-Humanoid: face up or down about an axis from hand to hand (see image above)
+- Aircraft: nose up or down about an axis from wing to wing
+- Humanoid: face up or down about an axis from hand to hand (see image above)
 
 ##### Roll:
-Aircraft: rotation about an axis running from nose to tail
-Humanoid: rotation about an axis running from front to back 
+- Aircraft: rotation about an axis running from nose to tail
+- Humanoid: rotation about an axis running from front to back 
 
 ##### Yaw: (not needed for KHR-1)
-Aircraft: nose left or right about an axis running up and down
-Humanoid: face left or right about an ais running up and down
+- Aircraft: nose left or right about an axis running up and down
+- Humanoid: face left or right about an ais running up and down
 
