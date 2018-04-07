@@ -1,0 +1,24 @@
+Control KHR-1 with Arduino
+
+Using the VarSpeedServo library, observe speed differences of the write
+function using a single servo. Test speeds in intervals of 10 starting at 0.
+
+In specific, we will use the write function with wait=true so that we don't
+write a different position in the middle of moving to the previous. We will also
+alternate between degrees 0 and 180 for the greatest travel distance possible.
+No delay interval will be used between positions.
+
+Note that speed=0 will default to full speed.
+========================
+Observations:
+(1) Speeds 10 - 80 are slow enough to allow the servo to move to the first
+position before moving to the next.
+
+(2) Speeds greater than 90 fail to move to the first position and interrupts in
+the middle, moving to the second position. This is probably because the function
+checks for the values written and not the physical position.
+
+These speeds also do not show very much difference in how fast they move, but
+results may differ in other servos.
+
+
