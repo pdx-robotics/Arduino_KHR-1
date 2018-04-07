@@ -7,13 +7,12 @@ It will be modified to work with a Bluetooth module and an Arduino Board.
 - Servos: KRS-784 ICS
 - Servo Control Board: RCB-1
 
-We will not be using the RCB-1 for this project. Servo Control will be done by
-  Arduino
+We will not be using the RCB-1 for this project. Servo Control will be done by Arduino
 
 ****
-#### Servo Mapping
-
+#### Servo Mapping ####
 The Servos are mapped for reference as seen below:
+
 ![alt text](https://github.com/pdx-robotics/Arduino_KHR-1/blob/master/KHR-1_servonumbering_modified.png)
 
 | Part | Right | Left |
@@ -36,15 +35,15 @@ that an aircraft in flight can freely rotate about. Here we take advantage of
 these names to help us describe the movements of a single joint made up of many servos/motors.
 
 
-* Pitch:
+Pitch:
 Aircraft: nose up or down about an axis from wing to wing
 Humanoid: face up or down about an axis from hand to hand (see image above)
 
-* Roll:
+Roll:
 Aircraft: rotation about an axis running from nose to tail
 Humanoid: rotation about an axis running from front to back 
 
-* Yaw: (not needed for KHR-1)
+Yaw: (not needed for KHR-1)
 Aircraft: nose left or right about an axis running up and down
 Humanoid: face left or right about an ais running up and down
 
