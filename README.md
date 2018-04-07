@@ -12,6 +12,7 @@ We will not be using the RCB-1 for this project. Servo Control will be done by
 
 ****
 #### Servo Mapping
+
 The Servos are mapped for reference as seen below:
 ![alt text](https://github.com/pdx-robotics/Arduino_KHR-1/blob/master/KHR-1_servonumbering_modified.png)
 
