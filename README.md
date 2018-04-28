@@ -45,5 +45,5 @@ these names to help us describe the movements of a single joint made up of many 
 
 ##### Yaw: (not needed for KHR-1)
 - Aircraft: nose left or right about an axis running up and down
-- Humanoid: face left or right about an ais running up and down
+- Humanoid: face left or right about an axis running up and down
 
