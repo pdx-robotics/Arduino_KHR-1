@@ -58,6 +58,7 @@ void detach_KHR_1(void);
 // Hardcoded actions
 void left_wave(void);
 void right_wave(void);
+void both_wave();
 void stand(void);
 void robot_dance(void);
 void cheer(void);
