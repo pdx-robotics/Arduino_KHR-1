@@ -8,16 +8,18 @@
 VarSpeedServo myservo; 
 int khr_servo = 2;
 
-void setup() {
+void setup()
+{
   Serial.begin(9600);
   myservo.attach(khr_servo);
 }
 
-void loop() {
+void loop()
+{
   int s; // Speed value for write function
 
   // Increment speed in intervals of 10
-  for(int i = 0;i<15;i++)
+  for (int i = 0;i<15;i++)
   {
     s = i*10;
     Serial.print(s,DEC);

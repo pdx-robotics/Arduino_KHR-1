@@ -48,7 +48,7 @@ VarSpeedServo right_a_roll;
 */
 VarSpeedServo head_pan;
 
-void attach_KHR_1(void)
+void attach_KHR_1()
 {
     left_s_pitch.attach(L_S_PITCH);
     left_s_roll.attach(L_S_ROLL);
@@ -73,7 +73,7 @@ void attach_KHR_1(void)
     head_pan.attach(HEAD);
 }
      
-void detach_KHR_1(void)
+void detach_KHR_1()
 {
     left_s_pitch.detach();
     left_s_roll.detach();
@@ -99,7 +99,7 @@ void detach_KHR_1(void)
 }
 
 // Wave with left hand
-void left_wave(void)
+void left_wave()
 {
     left_s_pitch.write(150,50);
     left_s_roll.write(0,50);
@@ -117,7 +117,7 @@ void left_wave(void)
 }
 
 // Wave with right hand
-void right_wave(void)
+void right_wave()
 {
     right_s_pitch.write(30,50);
     right_s_roll.write(160,50);

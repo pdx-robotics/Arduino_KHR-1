@@ -50,19 +50,19 @@
 #define HEAD      8
 
 // setup functions
-void attach_KHR_1(void);
-void detach_KHR_1(void);
+void attach_KHR_1();
+void detach_KHR_1();
 
 // Used to demonstrate what certain values do.
 
 // Hardcoded actions
-void left_wave(void);
-void right_wave(void);
+void left_wave();
+void right_wave();
 void both_wave();
-void stand(void);
-void robot_dance(void);
-void cheer(void);
-void flex_arms(void);
+void stand();
+void robot_dance();
+void cheer();
+void flex_arms();
 
 // KHR_1 servos
 extern VarSpeedServo left_s_pitch;
