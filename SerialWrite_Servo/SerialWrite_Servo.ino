@@ -19,8 +19,6 @@ void loop()
       Serial.print("Writing: ");
       Serial.println(pos);
       myservo.write(pos);
-      
     }
   }
-
 }

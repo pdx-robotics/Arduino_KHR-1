@@ -57,7 +57,7 @@ void attach_KHR_1()
     right_s_pitch.attach(R_S_PITCH);
     right_s_roll.attach(R_S_ROLL);
     right_elbow.attach(R_ELBOW);
-/*
+    /*
     left_h_roll.attach(L_H_ROLL);
     left_h_pitch.attach(L_H_PITCH);
     left_knee.attach(L_KNEE);
@@ -72,7 +72,7 @@ void attach_KHR_1()
 */
     head_pan.attach(HEAD);
 }
-     
+
 void detach_KHR_1()
 {
     left_s_pitch.detach();
@@ -82,7 +82,7 @@ void detach_KHR_1()
     right_s_pitch.detach();
     right_s_roll.detach();
     right_elbow.detach();
-/*    
+    /*    
     left_h_roll.detach();
     left_h_pitch.detach();
     left_knee.detach();
@@ -101,60 +101,60 @@ void detach_KHR_1()
 // Wave with left hand
 void left_wave()
 {
-    left_s_pitch.write(150,50);
-    left_s_roll.write(0,50);
+    left_s_pitch.write(150, 50);
+    left_s_roll.write(0, 50);
 
     delay(1500);
-    left_elbow.write(110,70,true);
-    left_elbow.write(70,70,true);
-    left_elbow.write(110,70,true);
-    left_elbow.write(70,70,true);
+    left_elbow.write(110, 70, true);
+    left_elbow.write(70, 70, true);
+    left_elbow.write(110, 70, true);
+    left_elbow.write(70, 70, true);
 
-    left_elbow.write(80,50);
-    left_s_pitch.write(10,50);
-    left_s_roll.write(10,50);
+    left_elbow.write(80, 50);
+    left_s_pitch.write(10, 50);
+    left_s_roll.write(10, 50);
     delay(1000);
 }
 
 // Wave with right hand
 void right_wave()
 {
-    right_s_pitch.write(30,50);
-    right_s_roll.write(160,50);
+    right_s_pitch.write(30, 50);
+    right_s_roll.write(160, 50);
     delay(1500);
-    right_elbow.write(110,70,true);
-    right_elbow.write(70,70,true);
-    right_elbow.write(110,70,true);
-    right_elbow.write(70,70,true);
-    
-    right_elbow.write(90,50);
-    right_s_pitch.write(170,50);
-    right_s_roll.write(160,50);
+    right_elbow.write(110, 70, true);
+    right_elbow.write(70, 70, true);
+    right_elbow.write(110, 70, true);
+    right_elbow.write(70, 70, true);
+
+    right_elbow.write(90, 50);
+    right_s_pitch.write(170, 50);
+    right_s_roll.write(160, 50);
     delay(1000);
 }
 
 void both_wave()
 {
-	left_s_pitch.write(150,50);
-	right_s_pitch.write(30,50);
-    left_s_roll.write(0,50);
-	right_s_roll.write(160,50);
-	
-    delay(1500);
-    left_elbow.write(110,70);
-	right_elbow.write(110,70,true);
-    left_elbow.write(70,70);
-	right_elbow.write(70,70,true);
-    left_elbow.write(110,70);
-	right_elbow.write(110,70,true);
-    left_elbow.write(70,70);
-	right_elbow.write(70,70,true);
+    left_s_pitch.write(150, 50);
+    right_s_pitch.write(30, 50);
+    left_s_roll.write(0, 50);
+    right_s_roll.write(160, 50);
 
-    left_elbow.write(80,50);
-	right_elbow.write(90,50);
-    left_s_pitch.write(10,50);
-	right_s_pitch.write(170,50);
-    left_s_roll.write(10,50);
-	right_s_roll.write(160,50);
+    delay(1500);
+    left_elbow.write(110, 70);
+    right_elbow.write(110, 70, true);
+    left_elbow.write(70, 70);
+    right_elbow.write(70, 70, true);
+    left_elbow.write(110, 70);
+    right_elbow.write(110, 70, true);
+    left_elbow.write(70, 70);
+    right_elbow.write(70, 70, true);
+
+    left_elbow.write(80, 50);
+    right_elbow.write(90, 50);
+    left_s_pitch.write(10, 50);
+    right_s_pitch.write(170, 50);
+    left_s_roll.write(10, 50);
+    right_s_roll.write(160, 50);
     delay(1000);
 }

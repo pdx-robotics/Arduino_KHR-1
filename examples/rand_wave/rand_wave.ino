@@ -9,12 +9,18 @@ void setup()
 
 void loop()
 {
-  int randnumber = random(0,6);
-  
-  if (randnumber<2)
+  int randnumber = random(0, 6);
+
+  if (randnumber < 2)
+  {
     left_wave();
-  else if (randnumber>1 && randnumber<5)
+  }
+  else if (randnumber > 1 && randnumber < 5)
+  {
     right_wave();
-  else 
+  }
+  else
+  {
     both_wave();
+  }
 }

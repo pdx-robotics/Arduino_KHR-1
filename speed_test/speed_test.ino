@@ -5,7 +5,7 @@
  *  Note: 0 will default to full speed.
  */
 #include <VarSpeedServo.h>
-VarSpeedServo myservo; 
+VarSpeedServo myservo;
 int khr_servo = 2;
 
 void setup()
@@ -19,13 +19,13 @@ void loop()
   int s; // Speed value for write function
 
   // Increment speed in intervals of 10
-  for (int i = 0;i<15;i++)
+  for (int i = 0; i < 15; i++)
   {
-    s = i*10;
-    Serial.print(s,DEC);
+    s = i * 10;
+    Serial.print(s, DEC);
     Serial.print("\n");
-    myservo.write(0,s,true); 
-    myservo.write(180,s,true);
+    myservo.write(0, s, true);
+    myservo.write(180, s, true);
     delay(2000);
   }
 }
