@@ -27,6 +27,7 @@
 
 #include "Arduino.h"
 #include <VarSpeedServo.h>
+#include <unordered_map>
 
 // Arduino board pins
 #define L_S_PITCH 2
@@ -63,6 +64,14 @@ void stand();
 void robot_dance();
 void cheer();
 void flex_arms();
+
+struct ArmPose
+{
+    int left_s_pitch_angle, left_s_roll_angle, left_elbow_angle,
+    right_s_pitch_angle, right_s_roll_angle, right_elbow_angle;
+};
+
+const std::unordered_map<char, ArmPosition> char_pose;
 
 // KHR_1 servos
 extern VarSpeedServo left_s_pitch;
