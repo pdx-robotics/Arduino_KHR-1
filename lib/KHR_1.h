@@ -71,7 +71,7 @@ struct ArmPose
     right_s_pitch_angle, right_s_roll_angle, right_elbow_angle;
 };
 
-const std::unordered_map<char, ArmPosition> char_pose;
+const std::unordered_map<char, ArmPose> char_pose;
 
 // KHR_1 servos
 extern VarSpeedServo left_s_pitch;
