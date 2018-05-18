@@ -19,9 +19,8 @@
  * | Ankle Pitch    |  13   |  14   |
  * | Ankle Roll     |  15   |  16   |
  * | Head Pan       |  17   |
- *
- 
-*/
+ */
+
 #ifndef KHR_1_h
 #define KHR_1_h
 
@@ -36,6 +35,8 @@
 #define R_S_ROLL  5
 #define L_ELBOW   6
 #define R_ELBOW   7
+#define HEAD      8
+
 /*
 #define L_H_ROLL
 #define R_H_ROLL
@@ -48,7 +49,6 @@
 #define L_A_ROLL
 #define R_A_ROLL
 */
-#define HEAD      8
 
 // setup functions
 void attach_KHR_1();
@@ -68,7 +68,7 @@ void flex_arms();
 struct ArmPose
 {
     int left_s_pitch_angle, left_s_roll_angle, left_elbow_angle,
-    right_s_pitch_angle, right_s_roll_angle, right_elbow_angle;
+        right_s_pitch_angle, right_s_roll_angle, right_elbow_angle;
 };
 
 const std::unordered_map<char, ArmPose> char_pose;
@@ -95,5 +95,5 @@ extern VarSpeedServo right_a_pitch;
 extern VarSpeedServo right_a_roll;
 */
 extern VarSpeedServo head_pan;
-   
+
 #endif
