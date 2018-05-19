@@ -1,11 +1,11 @@
-/* 
- * KHR_1.h - Library to control the 
+/*
+ * KHR_1.h - Library to control the
  * Kondo KHR_1.
  *
  * Created by Aaron Chan, April 11, 2018
  *
  * The KHR_1 servo channels have been renumbered for this Arduino
- * implementation. These numbers do not necessarily correspond 
+ * implementation. These numbers do not necessarily correspond
  * with physical pins on the board:
  *
  * | Part           | Right | Left  |

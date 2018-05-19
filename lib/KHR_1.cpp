@@ -33,6 +33,7 @@ VarSpeedServo left_elbow;
 VarSpeedServo right_s_pitch;
 VarSpeedServo right_s_roll;
 VarSpeedServo right_elbow;
+
 /*
 VarSpeedServo left_h_roll;
 VarSpeedServo left_h_pitch;
@@ -46,6 +47,7 @@ VarSpeedServo right_knee;
 VarSpeedServo right_a_pitch;
 VarSpeedServo right_a_roll;
 */
+
 VarSpeedServo head_pan;
 
 void attach_KHR_1()
@@ -57,6 +59,7 @@ void attach_KHR_1()
     right_s_pitch.attach(R_S_PITCH);
     right_s_roll.attach(R_S_ROLL);
     right_elbow.attach(R_ELBOW);
+
     /*
     left_h_roll.attach(L_H_ROLL);
     left_h_pitch.attach(L_H_PITCH);
@@ -82,6 +85,7 @@ void detach_KHR_1()
     right_s_pitch.detach();
     right_s_roll.detach();
     right_elbow.detach();
+
     /*    
     left_h_roll.detach();
     left_h_pitch.detach();
@@ -95,6 +99,7 @@ void detach_KHR_1()
     right_a_pitch.detach();
     right_a_roll.detach();
 */
+
     head_pan.detach();
 }
 
