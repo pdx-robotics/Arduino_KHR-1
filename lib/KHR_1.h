@@ -27,6 +27,7 @@
 #include "Arduino.h"
 #include <VarSpeedServo.h>
 #include <unordered_map>
+#include <string>
 
 // Arduino board pins
 #define L_S_PITCH 2
@@ -50,50 +51,60 @@
 #define R_A_ROLL
 */
 
-// setup functions
-void attach_KHR_1();
-void detach_KHR_1();
-
-// Used to demonstrate what certain values do.
-
-// Hardcoded actions
-void left_wave();
-void right_wave();
-void both_wave();
-void stand();
-void robot_dance();
-void cheer();
-void flex_arms();
-
-struct ArmPose
+class KHR_1
 {
-    int left_s_pitch_angle, left_s_roll_angle, left_elbow_angle,
-        right_s_pitch_angle, right_s_roll_angle, right_elbow_angle;
+public:
+	// setup functions
+	void attach();
+	void detach();
+
+	// Used to demonstrate what certain values do.
+
+	// Hardcoded actions
+	void left_wave();
+	void right_wave();
+	void both_wave();
+	void stand();
+	void robot_dance();
+	void cheer();
+	void flex_arms();
+	bool semaphore(const std::string & s);
+
+private:
+	struct ArmPose
+	{
+		int left_s_pitch_angle, left_s_roll_angle, left_elbow_angle,
+			right_s_pitch_angle, right_s_roll_angle, right_elbow_angle;
+	};
+
+	static const std::unordered_map<char, ArmPose> char_pose;
+
+	void semaphore(char ch);
+
+	// KHR_1 servos
+	extern VarSpeedServo left_s_pitch;
+	extern VarSpeedServo left_s_roll;
+	extern VarSpeedServo left_elbow;
+
+	extern VarSpeedServo right_s_pitch;
+	extern VarSpeedServo right_s_roll;
+	extern VarSpeedServo right_elbow;
+
+	/*
+	extern VarSpeedServo left_h_roll;
+	extern VarSpeedServo left_h_pitch;
+	extern VarSpeedServo left_knee;
+	extern VarSpeedServo left_a_pitch;
+	extern VarSpeedServo left_a_roll;
+
+	extern VarSpeedServo right_h_roll;
+	extern VarSpeedServo right_h_pitch;
+	extern VarSpeedServo right_knee;
+	extern VarSpeedServo right_a_pitch;
+	extern VarSpeedServo right_a_roll;
+	*/
+
+	extern VarSpeedServo head_pan;
 };
-
-const std::unordered_map<char, ArmPose> char_pose;
-
-// KHR_1 servos
-extern VarSpeedServo left_s_pitch;
-extern VarSpeedServo left_s_roll;
-extern VarSpeedServo left_elbow;
-
-extern VarSpeedServo right_s_pitch;
-extern VarSpeedServo right_s_roll;
-extern VarSpeedServo right_elbow;
-/*
-extern VarSpeedServo left_h_roll;
-extern VarSpeedServo left_h_pitch;
-extern VarSpeedServo left_knee;
-extern VarSpeedServo left_a_pitch;
-extern VarSpeedServo left_a_roll;
-
-extern VarSpeedServo right_h_roll;
-extern VarSpeedServo right_h_pitch;
-extern VarSpeedServo right_knee;
-extern VarSpeedServo right_a_pitch;
-extern VarSpeedServo right_a_roll;
-*/
-extern VarSpeedServo head_pan;
 
 #endif
