@@ -191,6 +191,7 @@ bool KHR_1::semaphore(const std::string & s)
 		semaphore(std::tolower(ch));
 		delay(1000);
 	}
+	return true;
 }
 
 const KHR_1::ArmPose KHR_1::charToArmPose(char ch) const
