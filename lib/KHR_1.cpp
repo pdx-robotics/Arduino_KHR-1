@@ -24,9 +24,9 @@
 */
 #include "Arduino.h"
 #include "KHR_1.h"
-#include <locale>
+#include <cctype>
 
-// KHR_1 servos
+/* // KHR_1 servos
 VarSpeedServo left_s_pitch;
 VarSpeedServo left_s_roll;
 VarSpeedServo left_elbow;
@@ -49,38 +49,17 @@ VarSpeedServo right_a_pitch;
 VarSpeedServo right_a_roll;
 */
 
-VarSpeedServo head_pan;
+// VarSpeedServo head_pan; */
 
-std::unordered_map<char, ArmPose> KHR_1::char_pose
+KHR_1::KHR_1()
 {
-	{'a', {}},
-	{'b', {}},
-	{'c', {}},
-	{'d', {}},
-	{'e', {}},
-	{'f', {}},
-	{'g', {}},
-	{'h', {}},
-	{'i', {}},
-	{'j', {}},
-	{'k', {}},
-	{'l', {}},
-	{'m', {}},
-	{'n', {}},
-	{'o', {}},
-	{'p', {}},
-	{'q', {}},
-	{'r', {}},
-	{'s', {}},
-	{'t', {}},
-	{'u', {}},
-	{'v', {}},
-	{'w', {}},
-	{'x', {}},
-	{'y', {}},
-	{'z', {}},
-	{' ', {}}
-};
+	attach();
+}
+
+KHR_1::~KHR_1()
+{
+	detach();
+}
 
 void KHR_1::attach()
 {
@@ -105,6 +84,7 @@ void KHR_1::attach()
 	right_a_pitch.attach(R_A_PITCH);
 	right_a_roll.attach(R_A_ROLL);
 	*/
+
 	head_pan.attach(HEAD);
 }
 
@@ -196,22 +176,50 @@ void KHR_1::both_wave()
 	delay(1000);
 }
 
+// Check if string is valid, then semaphore each letter
 bool KHR_1::semaphore(const std::string & s)
 {
 	for (auto ch : s)
 	{
-		if (!(std::ctype::is(std::ctype::alpha, ch) || ' '))
+		if (!(std::isalpha(ch) || ' '))
 		{
 			return false;
 		}
 	}
 	for (auto ch : s)
 	{
-		semaphore(std::ctype::tolower(ch));
+		semaphore(std::tolower(ch));
+		delay(1000);
 	}
+}
+
+const KHR_1::ArmPose KHR_1::charToArmPose(char ch) const
+{
+	ArmPose pose;
+
+	// WIP Determine pose coordinates
+	switch (ch)
+	{
+		case 'a':
+			break;
+		default:
+			break;
+	}
+
+	return pose;
+}
+
+void KHR_1::poseArms(const KHR_1::ArmPose & pose)
+{
+	left_s_pitch.write(pose.left_s_pitch_angle, default_speed);
+	left_s_roll.write(pose.left_s_roll_angle, default_speed);
+	left_elbow.write(pose.left_elbow_angle, default_speed);
+	right_s_pitch.write(pose.right_s_pitch_angle, default_speed);
+	right_s_roll.write(pose.right_s_roll_angle, default_speed);
+	right_elbow.write(pose.right_elbow_angle, default_speed);
 }
 
 void KHR_1::semaphore(char ch)
 {
-
+	poseArms(charToArmPose(ch));
 }

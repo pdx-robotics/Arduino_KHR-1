@@ -25,8 +25,8 @@
 #define KHR_1_h
 
 #include "Arduino.h"
+#include <StandardCplusplus.h>
 #include <VarSpeedServo.h>
-#include <unordered_map>
 #include <string>
 
 // Arduino board pins
@@ -54,9 +54,8 @@
 class KHR_1
 {
 public:
-	// setup functions
-	void attach();
-	void detach();
+	KHR_1();
+	~KHR_1();
 
 	// Used to demonstrate what certain values do.
 
@@ -68,20 +67,28 @@ public:
 	void robot_dance();
 	void cheer();
 	void flex_arms();
-	bool semaphore(const std::string & s);
 
+	// Semaphore a string, return false on invalid string
+	// Valid string contains only letters and spaces
+	bool semaphore(const std::string & s);
 private:
+	// setup functions
+	void attach();
+	void detach();
+
+	static const int default_speed = 70;
+
 	struct ArmPose
 	{
 		int left_s_pitch_angle, left_s_roll_angle, left_elbow_angle,
 			right_s_pitch_angle, right_s_roll_angle, right_elbow_angle;
 	};
 
-	static const std::unordered_map<char, ArmPose> char_pose;
-
+	const ArmPose charToArmPose(char ch) const;
+	void poseArms(const ArmPose & pose);
 	void semaphore(char ch);
 
-	// KHR_1 servos
+/* 	// KHR_1 servos
 	extern VarSpeedServo left_s_pitch;
 	extern VarSpeedServo left_s_roll;
 	extern VarSpeedServo left_elbow;
@@ -104,7 +111,32 @@ private:
 	extern VarSpeedServo right_a_roll;
 	*/
 
-	extern VarSpeedServo head_pan;
+	// extern VarSpeedServo head_pan; */
+ 
+	// KHR_1 servos
+	VarSpeedServo left_s_pitch;
+	VarSpeedServo left_s_roll;
+	VarSpeedServo left_elbow;
+
+	VarSpeedServo right_s_pitch;
+	VarSpeedServo right_s_roll;
+	VarSpeedServo right_elbow;
+
+	/*
+	VarSpeedServo left_h_roll;
+	VarSpeedServo left_h_pitch;
+	VarSpeedServo left_knee;
+	VarSpeedServo left_a_pitch;
+	VarSpeedServo left_a_roll;
+
+	VarSpeedServo right_h_roll;
+	VarSpeedServo right_h_pitch;
+	VarSpeedServo right_knee;
+	VarSpeedServo right_a_pitch;
+	VarSpeedServo right_a_roll;
+	*/
+
+	VarSpeedServo head_pan;
 };
 
 #endif
