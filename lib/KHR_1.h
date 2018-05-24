@@ -76,7 +76,7 @@ private:
 	void attach();
 	void detach();
 
-	static const int default_speed = 70;
+	static const int default_speed = 0;
 
 	struct ArmPose
 	{
@@ -88,31 +88,6 @@ private:
 	void poseArms(const ArmPose & pose);
 	void semaphore(char ch);
 
-/* 	// KHR_1 servos
-	extern VarSpeedServo left_s_pitch;
-	extern VarSpeedServo left_s_roll;
-	extern VarSpeedServo left_elbow;
-
-	extern VarSpeedServo right_s_pitch;
-	extern VarSpeedServo right_s_roll;
-	extern VarSpeedServo right_elbow;
-
-	/*
-	extern VarSpeedServo left_h_roll;
-	extern VarSpeedServo left_h_pitch;
-	extern VarSpeedServo left_knee;
-	extern VarSpeedServo left_a_pitch;
-	extern VarSpeedServo left_a_roll;
-
-	extern VarSpeedServo right_h_roll;
-	extern VarSpeedServo right_h_pitch;
-	extern VarSpeedServo right_knee;
-	extern VarSpeedServo right_a_pitch;
-	extern VarSpeedServo right_a_roll;
-	*/
-
-	// extern VarSpeedServo head_pan; */
- 
 	// KHR_1 servos
 	VarSpeedServo left_s_pitch;
 	VarSpeedServo left_s_roll;

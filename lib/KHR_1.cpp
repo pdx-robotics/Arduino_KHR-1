@@ -26,31 +26,6 @@
 #include "KHR_1.h"
 #include <cctype>
 
-/* // KHR_1 servos
-VarSpeedServo left_s_pitch;
-VarSpeedServo left_s_roll;
-VarSpeedServo left_elbow;
-
-VarSpeedServo right_s_pitch;
-VarSpeedServo right_s_roll;
-VarSpeedServo right_elbow;
-
-/*
-VarSpeedServo left_h_roll;
-VarSpeedServo left_h_pitch;
-VarSpeedServo left_knee;
-VarSpeedServo left_a_pitch;
-VarSpeedServo left_a_roll;
-
-VarSpeedServo right_h_roll;
-VarSpeedServo right_h_pitch;
-VarSpeedServo right_knee;
-VarSpeedServo right_a_pitch;
-VarSpeedServo right_a_roll;
-*/
-
-// VarSpeedServo head_pan; */
-
 KHR_1::KHR_1()
 {
 	attach();
@@ -196,28 +171,29 @@ bool KHR_1::semaphore(const std::string & s)
 
 const KHR_1::ArmPose KHR_1::charToArmPose(char ch) const
 {
-	ArmPose pose;
-
 	// WIP Determine pose coordinates
 	switch (ch)
 	{
 		case 'a':
+			return {180, 180, 180, 180, 180, 180};
+			break;
+		case 'b':
+			return {0, 0, 0, 0, 0, 0};
 			break;
 		default:
+			return {0, 0, 0, 0, 0, 0};
 			break;
 	}
-
-	return pose;
 }
 
 void KHR_1::poseArms(const KHR_1::ArmPose & pose)
 {
-	left_s_pitch.write(pose.left_s_pitch_angle, default_speed);
-	left_s_roll.write(pose.left_s_roll_angle, default_speed);
-	left_elbow.write(pose.left_elbow_angle, default_speed);
-	right_s_pitch.write(pose.right_s_pitch_angle, default_speed);
-	right_s_roll.write(pose.right_s_roll_angle, default_speed);
-	right_elbow.write(pose.right_elbow_angle, default_speed);
+	left_s_pitch.write(pose.left_s_pitch_angle, default_speed, true);
+	left_s_roll.write(pose.left_s_roll_angle, default_speed, true);
+	left_elbow.write(pose.left_elbow_angle, default_speed, true);
+	right_s_pitch.write(pose.right_s_pitch_angle, default_speed, true);
+	right_s_roll.write(pose.right_s_roll_angle, default_speed, true);
+	right_elbow.write(pose.right_elbow_angle, default_speed, true);
 }
 
 void KHR_1::semaphore(char ch)
