@@ -57,6 +57,10 @@ public:
 	KHR_1();
 	~KHR_1();
 
+	// setup functions
+	void attach();
+	void detach();
+
 	// Used to demonstrate what certain values do.
 
 	// Hardcoded actions
@@ -72,10 +76,6 @@ public:
 	// Valid string contains only letters and spaces
 	bool semaphore(const std::string & s);
 private:
-	// setup functions
-	void attach();
-	void detach();
-
 	static const int default_speed = 0;
 
 	struct ArmPose

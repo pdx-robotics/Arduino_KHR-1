@@ -7,7 +7,7 @@
 KHR_1 khr;
 
 void setup() {
-	// khr.attach();
+	khr.attach();
 	randomSeed(analogRead(0));
 }
 
