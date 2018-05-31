@@ -28,7 +28,7 @@
 
 KHR_1::KHR_1()
 {
-	attach();
+	// attach();
 }
 
 KHR_1::~KHR_1()
