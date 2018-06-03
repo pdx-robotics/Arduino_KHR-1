@@ -1,0 +1,53 @@
+WIP
+
+Angles given for right arm and leg, left arm and leg move in the opposite direction.
+
+All given angles assume all servo not being modified are set to a T-pose like posture,
+	with both arms straight out to the sides, palms forward, and both legs straight
+	down, feet pointed forwards.
+
+Head Yaw:
+	0:
+	90:
+	180:
+
+Right Shoulder Pitch:
+	0: Rotates arm palm side up.
+	90: Rotates arm palm side forward.
+	180: Rotates arm palm side down.
+
+Right Shoulder Roll:
+	0: Arm pointing full rearwards.
+	90: Arm pointing to the side (T-Pose).
+	180: Arm pointing full forwards.
+	Notes: "Natural" human arm range likely 180-45 front to back.
+
+Right Elbow:
+	0:
+	90:
+	180:
+
+Right Hip Pitch:
+	0:
+	90:
+	180:
+
+Right Hip Roll:
+	0:
+	90:
+	180:
+
+Right Knee:
+	0:
+	90:
+	180:
+
+Right Ankle Pitch:
+	0:
+	90:
+	180:
+
+Right Ankle Roll:
+	0:
+	90:
+	180:
