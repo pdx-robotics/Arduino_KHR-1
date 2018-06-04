@@ -175,10 +175,25 @@ const KHR_1::ArmPose KHR_1::charToArmPose(char ch) const
 	switch (ch)
 	{
 		case 'a':
-			return {180, 180, 180, 180, 180, 180};
+			return {0, 0, 90, 180, 135, 90};
 			break;
 		case 'b':
-			return {0, 0, 0, 0, 0, 0};
+			return {0, 0, 90, 90, 90, 90};
+			break;
+		case 'c':
+			return {0, 0, 90, 0, 135, 90};
+			break;
+		case 'd':
+			return {0, 0, 90, 0, 180, 90};
+			break;
+		case 'e':
+			return {180, 45, 90, 180, 180, 90};
+			break;
+		case 'f':
+			return {180, 45, 90, 180, 180, 90};
+			break;
+		case 'g':
+			return {180, 45, 90, 180, 180, 90};
 			break;
 		default:
 			return {0, 0, 0, 0, 0, 0};
