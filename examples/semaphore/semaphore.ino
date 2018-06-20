@@ -10,5 +10,5 @@ void setup() {
 }
 
 void loop() {
-	khr.semaphore("ab");
+	khr.semaphore("abcd");
 }

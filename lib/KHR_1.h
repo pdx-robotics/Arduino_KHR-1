@@ -82,6 +82,10 @@ private:
 	{
 		int left_s_pitch_angle, left_s_roll_angle, left_elbow_angle,
 			right_s_pitch_angle, right_s_roll_angle, right_elbow_angle;
+
+		ArmPose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_angle,
+			int	right_s_pitch_angle, int right_s_roll_angle, int right_elbow_angle);
+	};
 	};
 
 	const ArmPose charToArmPose(char ch) const;

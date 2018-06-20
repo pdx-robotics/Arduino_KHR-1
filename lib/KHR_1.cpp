@@ -151,12 +151,23 @@ void KHR_1::both_wave()
 	delay(1000);
 }
 
+// WIP
+KHR_1::ArmPose::ArmPose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_angle,
+	int	right_s_pitch_angle, int right_s_roll_angle, int right_elbow_angle) :
+		left_s_pitch_angle{left_s_pitch_angle + 90},
+		left_s_roll_angle{left_s_roll_angle - 90},
+		left_elbow_angle{left_elbow_angle + 90},
+		right_s_pitch_angle{- right_s_pitch_angle + 90},
+		right_s_roll_angle{right_s_roll_angle + 90},
+		right_elbow_angle{right_elbow_angle + 90}
+{}
+
 // Check if string is valid, then semaphore each letter
 bool KHR_1::semaphore(const std::string & s)
 {
 	for (auto ch : s)
 	{
-		if (!(std::isalpha(ch) || ' '))
+		if (!(std::isalpha(ch) || ch == ' '))
 		{
 			return false;
 		}
@@ -175,17 +186,22 @@ const KHR_1::ArmPose KHR_1::charToArmPose(char ch) const
 	switch (ch)
 	{
 		case 'a':
-			return {0, 0, 90, 180, 135, 90};
+			//return {0, 0, 90, 180, 135, 90};
+			return {-90, 90, 0, -90, 45, 0};
 			break;
 		case 'b':
-			return {0, 0, 90, 90, 90, 90};
+			//return {0, 0, 90, 90, 90, 90};
+			return {-90, 90, 0, 0, 0, 0};
 			break;
 		case 'c':
-			return {0, 0, 90, 0, 135, 90};
+			//return {0, 0, 90, 0, 135, 90};
+			return {-90, 90, 0, 90, 45, 0};
 			break;
 		case 'd':
-			return {0, 0, 90, 0, 180, 90};
+			//return {0, 0, 90, 0, 180, 90};
+			return {-90, 90, 0, 90, 90, 0};
 			break;
+		/*
 		case 'e':
 			return {180, 45, 90, 180, 180, 90};
 			break;
@@ -195,8 +211,9 @@ const KHR_1::ArmPose KHR_1::charToArmPose(char ch) const
 		case 'g':
 			return {180, 45, 90, 180, 180, 90};
 			break;
+		*/
 		default:
-			return {0, 0, 0, 0, 0, 0};
+			return {90, 90, 90, 90, 90, 90};
 			break;
 	}
 }
