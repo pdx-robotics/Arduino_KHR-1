@@ -28,6 +28,7 @@
 #include <StandardCplusplus.h>
 #include <VarSpeedServo.h>
 #include <string>
+#include <vector>
 
 // Arduino board pins
 #define L_S_PITCH 2
@@ -86,11 +87,21 @@ private:
 		Pose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_angle,
 			int	right_s_pitch_angle, int right_s_roll_angle, int right_elbow_angle);
 	};
+
+	struct Frame
+	{
+		Pose pose;
+		int duration;
 	};
+
+	typedef std::vector<Frame> Animation;
+
+	const Animation stringToSemaphoreAnimation(const std::string & s) const;
+	void animate(const Animation & animation);
 
 	const Pose charToPose(char ch) const;
 	void pose(const Pose & pose);
-	void semaphore(char ch);
+	// void semaphore(char ch);
 
 	// KHR_1 servos
 	VarSpeedServo left_s_pitch;

@@ -1,6 +1,7 @@
 #include <StandardCplusplus.h>
 #include <string>
-#include <locale>
+#include <vector>
+#include <cctype>
 #include <KHR_1.h>
 
 KHR_1 khr;
@@ -10,5 +11,5 @@ void setup() {
 }
 
 void loop() {
-	khr.semaphore("abcd");
+	khr.semaphore("abcdefghijklmn");
 }

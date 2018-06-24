@@ -155,8 +155,8 @@ void KHR_1::both_wave()
 KHR_1::Pose::Pose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_angle,
 	int right_s_pitch_angle, int right_s_roll_angle, int right_elbow_angle) :
 		left_s_pitch_angle{left_s_pitch_angle + 90},
-		left_s_roll_angle{left_s_roll_angle - 90},
-		left_elbow_angle{left_elbow_angle + 90},
+		left_s_roll_angle{- left_s_roll_angle + 90},
+		left_elbow_angle{- left_elbow_angle + 90},
 		right_s_pitch_angle{- right_s_pitch_angle + 90},
 		right_s_roll_angle{right_s_roll_angle + 90},
 		right_elbow_angle{right_elbow_angle + 90}
@@ -172,11 +172,14 @@ bool KHR_1::semaphore(const std::string & s)
 			return false;
 		}
 	}
+	/*
 	for (auto ch : s)
 	{
 		semaphore(std::tolower(ch));
 		delay(1000);
 	}
+	*/
+	animate(stringToSemaphoreAnimation(s));
 	return true;
 }
 
@@ -201,17 +204,33 @@ const KHR_1::Pose KHR_1::charToPose(char ch) const
 			//return {0, 0, 90, 0, 180, 90};
 			return {-90, 90, 0, 90, 90, 0};
 			break;
-		/*
 		case 'e':
-			return {180, 45, 90, 180, 180, 90};
+			// return {180, 45, 90, 180, 180, 90};
+			return {90, 45, 0, -90, 90, 0};
 			break;
 		case 'f':
-			return {180, 45, 90, 180, 180, 90};
+			// return {180, 45, 90, 180, 180, 90};
+			return {0, 0, 0, -90, 90, 0};
 			break;
 		case 'g':
-			return {180, 45, 90, 180, 180, 90};
+			// return {180, 45, 90, 180, 180, 90};
+			return {-90, 45, 0, -90, 90, 0};
 			break;
-		*/
+		case 'j':
+			return {0, 0, 0, 90, 90, 0};
+			break;
+		case 'k':
+			return {90, 90, 0, -90, 45, 0};
+			break;
+		case 'l':
+			return {90, 45, 0, -90, 45, 0};
+			break;
+		case 'm':
+			return {0, 0, 0, -90, 45, 0};
+			break;
+		case 'n':
+			return {-90, 45, 0, -90, 45, 0};
+			break;
 		default:
 			return {90, 90, 90, 90, 90, 90};
 			break;
@@ -228,7 +247,55 @@ void KHR_1::pose(const KHR_1::Pose & pose, int speed = default_speed)
 	right_elbow.write(pose.right_elbow_angle, speed, true);
 }
 
+/*
 void KHR_1::semaphore(char ch)
 {
 	pose(charToPose(ch));
+}
+*/
+
+// WIP
+const KHR_1::Animation KHR_1::stringToSemaphoreAnimation(const std::string & s) const
+{
+	Animation animation;
+	
+	/*
+	for (auto ch : s)
+	{
+		// Add a frame with a 1s delay. Unchecked
+		//animation.emplace_back(charToPose(std::tolower(ch)), 1000);
+		animation.push_back({charToPose(std::tolower(ch)), 1000});
+	}
+	*/
+	
+	for (size_t i{0}; i < s.size(); i++)
+	{
+		if (s[i] == 'h')
+		{
+			animation.push_back({{0, 90, 0, 0, 0, 0}, 400});
+			animation.push_back({{-45, 90, 45, 0, 0, 0}, 1000});
+			animation.push_back({{0, 90, 0, 0, 0, 0}, 300});
+		}
+		else if (s[i] == 'i')
+		{
+			animation.push_back({{0, 90, 0, 0, 0, 0}, 400});
+			animation.push_back({{-45, 90, 45, 90, 45, 0}, 1000});
+			animation.push_back({{0, 90, 0, 0, 0, 0}, 300});
+		}
+		else
+		{
+			animation.push_back({charToPose(std::tolower(s[i])), 1000});
+		}
+	}
+
+	return animation;
+}
+
+void KHR_1::animate(const Animation & animation)
+{
+	for (auto & frame : animation)
+	{
+		pose(frame.pose);
+		delay(frame.duration);
+	}
 }
