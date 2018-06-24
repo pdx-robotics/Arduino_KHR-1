@@ -21,8 +21,8 @@
  * | Head Pan       |  17   |
  */
 
-#ifndef KHR_1_h
-#define KHR_1_h
+#ifndef KHR_1_H
+#define KHR_1_H
 
 #include "Arduino.h"
 #include <StandardCplusplus.h>
@@ -78,18 +78,18 @@ public:
 private:
 	static const int default_speed = 0;
 
-	struct ArmPose
+	struct Pose
 	{
 		int left_s_pitch_angle, left_s_roll_angle, left_elbow_angle,
 			right_s_pitch_angle, right_s_roll_angle, right_elbow_angle;
 
-		ArmPose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_angle,
+		Pose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_angle,
 			int	right_s_pitch_angle, int right_s_roll_angle, int right_elbow_angle);
 	};
 	};
 
-	const ArmPose charToArmPose(char ch) const;
-	void poseArms(const ArmPose & pose);
+	const Pose charToPose(char ch) const;
+	void pose(const Pose & pose);
 	void semaphore(char ch);
 
 	// KHR_1 servos

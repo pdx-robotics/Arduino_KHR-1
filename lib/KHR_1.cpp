@@ -152,8 +152,8 @@ void KHR_1::both_wave()
 }
 
 // WIP
-KHR_1::ArmPose::ArmPose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_angle,
-	int	right_s_pitch_angle, int right_s_roll_angle, int right_elbow_angle) :
+KHR_1::Pose::Pose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_angle,
+	int right_s_pitch_angle, int right_s_roll_angle, int right_elbow_angle) :
 		left_s_pitch_angle{left_s_pitch_angle + 90},
 		left_s_roll_angle{left_s_roll_angle - 90},
 		left_elbow_angle{left_elbow_angle + 90},
@@ -180,7 +180,7 @@ bool KHR_1::semaphore(const std::string & s)
 	return true;
 }
 
-const KHR_1::ArmPose KHR_1::charToArmPose(char ch) const
+const KHR_1::Pose KHR_1::charToPose(char ch) const
 {
 	// WIP Determine pose coordinates
 	switch (ch)
@@ -218,7 +218,7 @@ const KHR_1::ArmPose KHR_1::charToArmPose(char ch) const
 	}
 }
 
-void KHR_1::poseArms(const KHR_1::ArmPose & pose)
+void KHR_1::pose(const KHR_1::Pose & pose, int speed = default_speed)
 {
 	left_s_pitch.write(pose.left_s_pitch_angle, default_speed, true);
 	left_s_roll.write(pose.left_s_roll_angle, default_speed, true);
@@ -230,5 +230,5 @@ void KHR_1::poseArms(const KHR_1::ArmPose & pose)
 
 void KHR_1::semaphore(char ch)
 {
-	poseArms(charToArmPose(ch));
+	pose(charToPose(ch));
 }
