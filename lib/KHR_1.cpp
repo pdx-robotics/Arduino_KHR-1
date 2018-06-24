@@ -220,12 +220,12 @@ const KHR_1::Pose KHR_1::charToPose(char ch) const
 
 void KHR_1::pose(const KHR_1::Pose & pose, int speed = default_speed)
 {
-	left_s_pitch.write(pose.left_s_pitch_angle, default_speed, true);
-	left_s_roll.write(pose.left_s_roll_angle, default_speed, true);
-	left_elbow.write(pose.left_elbow_angle, default_speed, true);
-	right_s_pitch.write(pose.right_s_pitch_angle, default_speed, true);
-	right_s_roll.write(pose.right_s_roll_angle, default_speed, true);
-	right_elbow.write(pose.right_elbow_angle, default_speed, true);
+	left_s_pitch.write(pose.left_s_pitch_angle, speed, true);
+	left_s_roll.write(pose.left_s_roll_angle, speed, true);
+	left_elbow.write(pose.left_elbow_angle, speed, true);
+	right_s_pitch.write(pose.right_s_pitch_angle, speed, true);
+	right_s_roll.write(pose.right_s_roll_angle, speed, true);
+	right_elbow.write(pose.right_elbow_angle, speed, true);
 }
 
 void KHR_1::semaphore(char ch)
