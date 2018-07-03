@@ -78,12 +78,14 @@ public:
 	bool semaphore(const std::string & s);
 private:
 	static const int default_speed = 0;
+	static const int default_semaphore_delay = 1000;
 
 	struct Pose
 	{
 		int left_s_pitch_angle, left_s_roll_angle, left_elbow_angle,
 			right_s_pitch_angle, right_s_roll_angle, right_elbow_angle;
 
+		Pose();
 		Pose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_angle,
 			int	right_s_pitch_angle, int right_s_roll_angle, int right_elbow_angle);
 	};
@@ -92,15 +94,22 @@ private:
 	{
 		Pose pose;
 		int duration;
+
+		Frame();
+		Frame(const Pose & pose, int duration = default_semaphore_delay);
 	};
+
+	enum class SemaphoreSignal {LettersToFollow, NumbersToFollow, Attention, Rest, ReadyToReceive, Cancel};
 
 	typedef std::vector<Frame> Animation;
 
 	const Animation stringToSemaphoreAnimation(const std::string & s) const;
 	void animate(const Animation & animation);
 
-	const Pose charToPose(char ch) const;
-	void pose(const Pose & pose);
+	// const Pose toSemaphorePose(char ch) const;
+	const Animation toSemaphoreAnimation(char signal) const;
+	const Animation toSemaphoreAnimation(SemaphoreSignal signal) const;
+	void pose(const Pose & pose, int speed = default_speed);
 	// void semaphore(char ch);
 
 	// KHR_1 servos

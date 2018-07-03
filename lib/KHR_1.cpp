@@ -151,6 +151,15 @@ void KHR_1::both_wave()
 	delay(1000);
 }
 
+KHR_1::Pose::Pose() :
+	left_s_pitch_angle{0},
+	left_s_roll_angle{0},
+	left_elbow_angle{0},
+	right_s_pitch_angle{0},
+	right_s_roll_angle{0},
+	right_elbow_angle{0}
+{}
+
 // WIP
 KHR_1::Pose::Pose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_angle,
 	int right_s_pitch_angle, int right_s_roll_angle, int right_elbow_angle) :
@@ -162,82 +171,200 @@ KHR_1::Pose::Pose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_
 		right_elbow_angle{right_elbow_angle + 90}
 {}
 
+KHR_1::Frame::Frame() : pose{}, duration{0}
+{}
+
+KHR_1::Frame::Frame(const Pose & pose, int duration) : pose{pose}, duration{duration}
+{}
+
 // Check if string is valid, then semaphore each letter
 bool KHR_1::semaphore(const std::string & s)
 {
 	for (auto ch : s)
 	{
-		if (!(std::isalpha(ch) || ch == ' '))
+		if (!(std::isalnum(ch) || ch == ' '))
 		{
 			return false;
 		}
 	}
-	/*
-	for (auto ch : s)
-	{
-		semaphore(std::tolower(ch));
-		delay(1000);
-	}
-	*/
 	animate(stringToSemaphoreAnimation(s));
 	return true;
 }
 
-const KHR_1::Pose KHR_1::charToPose(char ch) const
+// const KHR_1::Pose KHR_1::toSemaphorePose(char ch) const
+const KHR_1::Animation KHR_1::toSemaphoreAnimation(char signal) const
 {
 	// WIP Determine pose coordinates
-	switch (ch)
+	switch (signal)
 	{
 		case 'a':
-			//return {0, 0, 90, 180, 135, 90};
-			return {-90, 90, 0, -90, 45, 0};
+		case '1':
+			return {Frame(Pose(-90, 90, 0, -90, 45, 0))};
 			break;
 		case 'b':
-			//return {0, 0, 90, 90, 90, 90};
-			return {-90, 90, 0, 0, 0, 0};
+		case '2':
+			return {Frame(Pose(-90, 90, 0, 0, 0, 0))};
 			break;
 		case 'c':
-			//return {0, 0, 90, 0, 135, 90};
-			return {-90, 90, 0, 90, 45, 0};
+		case '3':
+			return {Frame(Pose(-90, 90, 0, 90, 45, 0))};
 			break;
 		case 'd':
-			//return {0, 0, 90, 0, 180, 90};
-			return {-90, 90, 0, 90, 90, 0};
+		case '4':
+			return {Frame(Pose(-90, 90, 0, 90, 90, 0))};
 			break;
 		case 'e':
-			// return {180, 45, 90, 180, 180, 90};
-			return {90, 45, 0, -90, 90, 0};
+		case '5':
+			return {Frame(Pose(90, 45, 0, -90, 90, 0))};
 			break;
 		case 'f':
-			// return {180, 45, 90, 180, 180, 90};
-			return {0, 0, 0, -90, 90, 0};
+		case '6':
+			return {Frame(Pose(0, 0, 0, -90, 90, 0))};
 			break;
 		case 'g':
-			// return {180, 45, 90, 180, 180, 90};
-			return {-90, 45, 0, -90, 90, 0};
+		case '7':
+			return {Frame(Pose(-90, 45, 0, -90, 90, 0))};
+			break;
+		case 'h':
+		case '8':
+			return
+			{
+				Frame(Pose(0, 90, 0, 0, 0, 0), 400),
+				Frame(Pose(-45, 90, 45, 0, 0, 0)),
+				Frame(Pose(0, 90, 0, 0, 0, 0), 300)
+			};
+			break;
+		case 'i':
+		case '9':
+			return
+			{
+				Frame(Pose(0, 90, 0, 0, 0, 0), 400),
+				Frame(Pose(-45, 90, 45, 90, 45, 0)),
+				Frame(Pose(0, 90, 0, 0, 0, 0), 300)
+			};
 			break;
 		case 'j':
-			return {0, 0, 0, 90, 90, 0};
+			return {Frame(Pose(0, 0, 0, 90, 90, 0))};
 			break;
 		case 'k':
-			return {90, 90, 0, -90, 45, 0};
+		case '0':
+			return {Frame(Pose(90, 90, 0, -90, 45, 0))};
 			break;
 		case 'l':
-			return {90, 45, 0, -90, 45, 0};
+			return {Frame(Pose(90, 45, 0, -90, 45, 0))};
 			break;
 		case 'm':
-			return {0, 0, 0, -90, 45, 0};
+			return {Frame(Pose(0, 0, 0, -90, 45, 0))};
 			break;
 		case 'n':
-			return {-90, 45, 0, -90, 45, 0};
+			return {Frame(Pose(-90, 45, 0, -90, 45, 0))};
+			break;
+		case 'o':
+			return
+			{
+				Frame(Pose(0, 90, 0, 0, 0, 0), 400),
+				Frame(Pose(45, 90, 45, 0, 0, 0)),
+				Frame(Pose(0, 90, 0, 0, 0, 0), 300)
+			};
+			break;
+		case 'p':
+			return {Frame(Pose(90, 90, 0, 0, 0, 0))};
+			break;
+		case 'q':
+			return {Frame(Pose(90, 45, 0, 0, 0, 0))};
+			break;
+		case 'r':
+			return {Frame(Pose(0, 0, 0, 0, 0, 0))};
+			break;
+		case 's':
+			return {Frame(Pose(-90, 45, 0, 0, 0, 0))};
+			break;
+		case 't':
+			return {Frame(Pose(90, 90, 0, 90, 45, 0))};
+			break;
+		case 'u':
+			return {Frame(Pose(90, 45, 0, 90, 45, 0))};
+			break;
+		case 'v':
+			return {Frame(Pose(-90, 45, 0, 90, 90, 0))};
+			break;
+		case 'w':
+			return
+			{
+				Frame(Pose(0, 0, 0, 0, 90, 0), 400),
+				Frame(Pose(0, 0, 0, 45, 90, 45)),
+				Frame(Pose(0, 0, 0, 0, 90, 0), 300)
+			};
+			break;
+		case 'x':
+			return
+			{
+				Frame(Pose(-90, 45, 0, 0, 90, 0), 400),
+				Frame(Pose(-90, 45, 0, 45, 90, 45)),
+				Frame(Pose(-90, 45, 0, 0, 90, 0), 300)
+			};
+			break;
+		case 'y':
+			return {Frame(Pose(0, 0, 0, 90, 45, 0))};
+			break;
+		case 'z':
+			return
+			{
+				Frame(Pose(0, 0, 0, 0, 90, 0), 400),
+				Frame(Pose(0, 0, 0, -45, 90, 45)),
+				Frame(Pose(0, 0, 0, 0, 90, 0), 300)
+			};
+			break;
+		case ' ':
+			return {Frame(Pose(-90, 90, 0, -90, 90, 0))};
 			break;
 		default:
-			return {90, 90, 90, 90, 90, 90};
+			return {Frame(Pose(0, 0, 0, 0, 0, 0))};
 			break;
 	}
 }
 
-void KHR_1::pose(const KHR_1::Pose & pose, int speed = default_speed)
+const KHR_1::Animation KHR_1::toSemaphoreAnimation(KHR_1::SemaphoreSignal signal) const
+{
+	switch (signal)
+	{
+		case SemaphoreSignal::Attention:
+			return
+			{
+				Frame(Pose(90, 45, 0, 90, 45, 0)),
+				Frame(Pose(-90, 45, 0, -90, 45, 0)),
+				Frame(Pose(90, 45, 0, 90, 45, 0)),
+				Frame(Pose(-90, 45, 0, -90, 45, 0)),
+				Frame(Pose(90, 45, 0, 90, 45, 0)),
+				Frame(Pose(-90, 45, 0, -90, 45, 0))
+			};
+			break;
+		case SemaphoreSignal::ReadyToReceive:
+			return
+			{
+				Frame(Pose(90, 90, 0, 90, 90, 0)),
+				Frame(Pose(-90, 90, 0, -90, 90, 0))
+			};
+			break;
+		case SemaphoreSignal::LettersToFollow:
+			return toSemaphoreAnimation('j');
+			break;
+		case SemaphoreSignal::NumbersToFollow:
+			return {Frame(Pose(90, 45, 0, 90, 90, 0))};
+			break;
+		case SemaphoreSignal::Rest:
+			return toSemaphoreAnimation(' ');
+			break;
+		case SemaphoreSignal::Cancel:
+			return {Frame(Pose(-90, 45, 0, 90, 45, 0))};
+			break;
+		default:
+			return {Frame(Pose(0, 0, 0, 0, 0, 0))};
+			break;
+	}
+}
+
+void KHR_1::pose(const KHR_1::Pose & pose, int speed)
 {
 	left_s_pitch.write(pose.left_s_pitch_angle, speed, true);
 	left_s_roll.write(pose.left_s_roll_angle, speed, true);
@@ -247,46 +374,40 @@ void KHR_1::pose(const KHR_1::Pose & pose, int speed = default_speed)
 	right_elbow.write(pose.right_elbow_angle, speed, true);
 }
 
-/*
-void KHR_1::semaphore(char ch)
-{
-	pose(charToPose(ch));
-}
-*/
-
 // WIP
 const KHR_1::Animation KHR_1::stringToSemaphoreAnimation(const std::string & s) const
 {
-	Animation animation;
-	
-	/*
-	for (auto ch : s)
+	// Initialize the animation with the Attention signal
+	Animation animation{toSemaphoreAnimation(SemaphoreSignal::Attention)};
+
+	// Add animation for every char, plus extra animations for starting numbers or letters
+	for (size_t i{0}; i < s.size() - 1; i++)
 	{
-		// Add a frame with a 1s delay. Unchecked
-		//animation.emplace_back(charToPose(std::tolower(ch)), 1000);
-		animation.push_back({charToPose(std::tolower(ch)), 1000});
-	}
-	*/
-	
-	for (size_t i{0}; i < s.size(); i++)
-	{
-		if (s[i] == 'h')
+		// Add signal for the current character
+		Animation charSignal{toSemaphoreAnimation(s[i])};
+		animation.insert(animation.end(), charSignal.begin(), charSignal.end());
+		
+		// Add a "Numbers to Follow" signal if the next character is a number
+		if (std::isalpha(s[i]) && std::isdigit(s[i + 1]))
 		{
-			animation.push_back({{0, 90, 0, 0, 0, 0}, 400});
-			animation.push_back({{-45, 90, 45, 0, 0, 0}, 1000});
-			animation.push_back({{0, 90, 0, 0, 0, 0}, 300});
+			Animation numberSignal{toSemaphoreAnimation(SemaphoreSignal::NumbersToFollow)};
+			animation.insert(animation.end(), numberSignal.begin(), numberSignal.end());
 		}
-		else if (s[i] == 'i')
+		// Add a "Letters to Follow" signal if the next character is a letter
+		else if (std::isdigit(s[i]) && std::isalpha(s[i + 1]))
 		{
-			animation.push_back({{0, 90, 0, 0, 0, 0}, 400});
-			animation.push_back({{-45, 90, 45, 90, 45, 0}, 1000});
-			animation.push_back({{0, 90, 0, 0, 0, 0}, 300});
-		}
-		else
-		{
-			animation.push_back({charToPose(std::tolower(s[i])), 1000});
+			Animation letterSignal{toSemaphoreAnimation(SemaphoreSignal::LettersToFollow)};
+			animation.insert(animation.end(), letterSignal.begin(), letterSignal.end());
 		}
 	}
+
+	// Add signal for the last character
+	Animation lastCharSignal{toSemaphoreAnimation(s.back())};
+	animation.insert(animation.end(), lastCharSignal.begin(), lastCharSignal.end());
+
+	// Add "End of Message" or "Ready to Receive" signal
+	Animation endSignal{toSemaphoreAnimation(SemaphoreSignal::ReadyToReceive)};
+	animation.insert(animation.end(), endSignal.begin(), endSignal.end());
 
 	return animation;
 }
