@@ -1,53 +1,81 @@
-WIP
+This file describes how the servos on the KHR-1 should be directed to describe
+poses. First it will describe how the servos should behave using our translation
+library (you usually want this), and after that is the "raw" behavior if angles
+are sent directly.
 
-Angles given for right arm and leg, left arm and leg move in the opposite direction.
+All given angles assume all servo not being modified are set to a T-pose like
+posture, with both arms straight out to the sides, palms forward, and both legs
+straight down, feet pointed forwards. (All servos are centered in this pose).
 
-All given angles assume all servo not being modified are set to a T-pose like posture,
-	with both arms straight out to the sides, palms forward, and both legs straight
-	down, feet pointed forwards.
+All angles are in degrees.
 
-Head Yaw:
-	0:
-	90:
-	180:
+Translated inputs:
+	We plan to use a "forward, up, out" standard for servo movements. Starting
+	in the "base" pose described above, with all servos centered, all servo
+	positions are set to 0. Servo ranges are generally -90 to 90 (not accounting
+	for physical limitations for some poses). For any given servo, a movement
+	that will move a limb forward, up, or out to the sides of the KHR-1, will be
+	a positive angle, up to 90, and moements in the opposite direction will be
+	negative angles, up to -90.
+	
+	If each pose is imagined as a set of individual servo position changes from
+	the base pose, it's relatively easy to estimate all the angles for any given
+	pose using this system.
+	
+	For example, to have the KHR-1 standing, with both arms straight forward,
+	palms inwards, simply set the shoulder roll on both sides to 90, as it is a
+	forward motion in both cases.
 
-Right Shoulder Pitch:
-	0: Rotates arm palm side up.
-	90: Rotates arm palm side forward.
-	180: Rotates arm palm side down.
+Raw servo inputs:
 
-Right Shoulder Roll:
-	0: Arm pointing full rearwards.
-	90: Arm pointing to the side (T-Pose).
-	180: Arm pointing full forwards.
-	Notes: "Natural" human arm range likely 180-45 front to back.
+	Angles given for right arm and leg, left arm and leg move in the opposite
+	direction.
 
-Right Elbow:
-	0:
-	90:
-	180:
+	Head Yaw:
+		0: Head pointed left.
+		90: Head pointed forward.
+		180: Head pointed right.
 
-Right Hip Pitch:
-	0:
-	90:
-	180:
+	Right Shoulder Pitch:
+		0: Rotates arm palm side up.
+		90: Rotates arm palm side forward.
+		180: Rotates arm palm side down.
 
-Right Hip Roll:
-	0:
-	90:
-	180:
+	Right Shoulder Roll:
+		0: Arm pointing full rearwards.
+		90: Arm pointing to the side (T-Pose).
+		180: Arm pointing full forwards.
+		Notes: "Natural" human arm range likely 180-45 front to back.
 
-Right Knee:
-	0:
-	90:
-	180:
+	Right Elbow:
+		0: Hand pointed 90 degrees backwards.
+		90: Hand pointed straight out away from body.
+		180: Hand pointed 90 degrees forward.
 
-Right Ankle Pitch:
-	0:
-	90:
-	180:
+	Right Hip Pitch:
+		0: Leg pointed 90 degrees rearward.
+		90: Leg pointed straight down.
+		180: Leg pointed forward till it hits frame. (Hits frame at ~160 degrees)
 
-Right Ankle Roll:
-	0:
-	90:
-	180:
+	Right Hip Roll:
+		0: Leg pushing in towards crotch. (Hits frame at ~80 degrees.)
+		90: Leg Pointed straight down.
+		180: Leg pointed 90 degrees out to the right side.
+
+	Right Knee:
+		0: Leg 90 degrees forward.
+		90: Leg pointed straight down.
+		180: Leg 90 degrees rearward.
+
+	Right Ankle Pitch:
+		0: Foot sole pointed 90 degrees forward.
+		90: Foot sole pointed straight down.
+		180: Foot sole pointed 90 degrees rearward.
+
+	Right Ankle Roll:
+		0: Foot sole pointed outwards away from body. (Hits frame at ~70 degrees)
+		90: Foot sole pointed straight down.
+		180: Foot sole pointed 90 degrees inwards towards body.
+		
+		
+		
