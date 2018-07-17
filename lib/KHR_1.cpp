@@ -33,9 +33,15 @@ KHR_1::KHR_1()
 
 KHR_1::~KHR_1()
 {
-	detach();
+//	detach();
 }
-
+KHR_1::setup()
+{
+    pwm.begin();
+    pwm.setPWMFreq(60);
+    delay(10);
+}
+/*
 void KHR_1::attach()
 {
 	left_s_pitch.attach(L_S_PITCH);
@@ -46,7 +52,6 @@ void KHR_1::attach()
 	right_s_roll.attach(R_S_ROLL);
 	right_elbow.attach(R_ELBOW);
 
-	/*
 	left_h_roll.attach(L_H_ROLL);
 	left_h_pitch.attach(L_H_PITCH);
 	left_knee.attach(L_KNEE);
@@ -58,7 +63,6 @@ void KHR_1::attach()
 	right_knee.attach(R_KNEE);
 	right_a_pitch.attach(R_A_PITCH);
 	right_a_roll.attach(R_A_ROLL);
-	*/
 
 	head_pan.attach(HEAD);
 }
@@ -73,7 +77,6 @@ void KHR_1::detach()
 	right_s_roll.detach();
 	right_elbow.detach();
 
-	/*    
 	left_h_roll.detach();
 	left_h_pitch.detach();
 	left_knee.detach();
@@ -85,7 +88,6 @@ void KHR_1::detach()
 	right_knee.detach();
 	right_a_pitch.detach();
 	right_a_roll.detach();
-	*/
 
 	head_pan.detach();
 }
@@ -150,7 +152,7 @@ void KHR_1::both_wave()
 	right_s_roll.write(160, 50);
 	delay(1000);
 }
-
+*/
 KHR_1::Pose::Pose() :
 	left_s_pitch_angle{0},
 	left_s_roll_angle{0},
@@ -366,12 +368,20 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(KHR_1::SemaphoreSignal signal
 
 void KHR_1::pose(const KHR_1::Pose & pose, int speed)
 {
-	left_s_pitch.write(pose.left_s_pitch_angle, speed, true);
+    pwm.setPWM(L_S_PITCH,0,MAP(pose.left_s_pitch_angle));
+    pwm.setPWM(L_S_ROLL,0,MAP(pose.left_s_roll_angle));
+    pwm.setPWM(L_ELBOW,0,MAP(pose.left_elbow_angle));
+    pwm.setPWM(R_S_PITCH,0,MAP(pose.right_s_pitch_angle));
+    pwm.setPWM(R_S_ROLL,0,MAP(pose.right_s_roll_angle));
+    pwm.setPWM(R_ELBOW,0,MAP(pose.right_elbow_angle));
+/*
+    left_s_pitch.write(pose.left_s_pitch_angle, speed, true);
 	left_s_roll.write(pose.left_s_roll_angle, speed, true);
 	left_elbow.write(pose.left_elbow_angle, speed, true);
 	right_s_pitch.write(pose.right_s_pitch_angle, speed, true);
 	right_s_roll.write(pose.right_s_roll_angle, speed, true);
 	right_elbow.write(pose.right_elbow_angle, speed, true);
+    */
 }
 
 // WIP
