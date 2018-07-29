@@ -7,7 +7,7 @@
 KHR_1 khr;
 
 void setup() {
-	khr.attach();
+	khr.init();
 }
 
 void loop() {
