@@ -26,9 +26,12 @@
 
 #include "Arduino.h"
 #include <StandardCplusplus.h>
-#include <VarSpeedServo.h>
+//#include <VarSpeedServo.h>
 #include <string>
 #include <vector>
+
+// Needed for servo driver
+#include <Adafruit_PWMServoDriver.h>
 
 // Arduino board pins
 #define L_S_PITCH 2
@@ -52,12 +55,16 @@
 #define R_A_ROLL
 */
 
+#define PULSELEN 60
+#define MAP(d) map(d,0,180,0,720)
+
 class KHR_1
 {
 public:
 	KHR_1();
 	~KHR_1();
-
+    setup();
+/*
 	// setup functions
 	void attach();
 	void detach();
@@ -72,7 +79,7 @@ public:
 	void robot_dance();
 	void cheer();
 	void flex_arms();
-
+*/
 	// Semaphore a string, return false on invalid string
 	// Valid string contains only letters and spaces
 	bool semaphore(const std::string & s);
@@ -112,8 +119,10 @@ private:
 	void pose(const Pose & pose, int speed = default_speed);
 	// void semaphore(char ch);
 
+    Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 	// KHR_1 servos
-	VarSpeedServo left_s_pitch;
+	/* Not needed for servo driver
+    VarSpeedServo left_s_pitch;
 	VarSpeedServo left_s_roll;
 	VarSpeedServo left_elbow;
 
@@ -121,7 +130,6 @@ private:
 	VarSpeedServo right_s_roll;
 	VarSpeedServo right_elbow;
 
-	/*
 	VarSpeedServo left_h_roll;
 	VarSpeedServo left_h_pitch;
 	VarSpeedServo left_knee;
@@ -133,9 +141,9 @@ private:
 	VarSpeedServo right_knee;
 	VarSpeedServo right_a_pitch;
 	VarSpeedServo right_a_roll;
-	*/
 
 	VarSpeedServo head_pan;
+    */
 };
 
 #endif
