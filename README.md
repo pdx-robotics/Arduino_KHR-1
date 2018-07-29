@@ -15,7 +15,7 @@ The Servos are mapped for reference as seen below:
 
 ![alt text](https://github.com/pdx-robotics/Arduino_KHR-1/blob/semaphore/servo-driver/KHR-1_ServoChannels.png)
 
-| Part | Right | Left |
+| Part | Left | Right|
 |----|:-----:|:----:|
 | Shoulder Pitch |   0   |  15   |
 | Shoulder Roll  |   1   |  14   |
