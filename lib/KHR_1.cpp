@@ -119,14 +119,6 @@ void KHR_1::both_wave()
 	delay(1000);
 }
 */
-KHR_1::Pose::Pose() :
-	left_s_pitch_angle{0},
-	left_s_roll_angle{0},
-	left_elbow_angle{0},
-	right_s_pitch_angle{0},
-	right_s_roll_angle{0},
-	right_elbow_angle{0}
-{}
 
 // WIP
 KHR_1::Pose::Pose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_angle,
@@ -139,15 +131,10 @@ KHR_1::Pose::Pose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_
 		right_elbow_angle{right_elbow_angle + 90}
 {}
 
-KHR_1::Frame::Frame() : pose{}, duration{0}
-{}
-
-KHR_1::Frame::Frame(const Pose & pose, int duration) : pose{pose}, duration{duration}
-{}
-
 // Check if string is valid, then semaphore each letter
 bool KHR_1::semaphore(const std::string & s)
 {
+	// Check if string is valid
 	for (auto ch : s)
 	{
 		if (!(std::isalnum(ch) || ch == ' '))
@@ -155,7 +142,32 @@ bool KHR_1::semaphore(const std::string & s)
 			return false;
 		}
 	}
-	animate(stringToSemaphoreAnimation(s));
+
+	animate(toSemaphoreAnimation(SemaphoreSignal::Attention)); // Begin signal
+
+	// Signal if first character is a number
+	if (std::isdigit(s[0]))
+	{
+		animate(toSemaphoreAnimation(SemaphoreSignal::NumbersToFollow));
+	}
+	
+	for (size_t i{0}; i < s.size() - 1; i++)
+	{
+		animate(toSemaphoreAnimation(s[i]));
+
+		if (std::isalpha(s[i]) && std::isdigit(s[i + 1]))
+		{
+			animate(toSemaphoreAnimation(SemaphoreSignal::NumbersToFollow));
+		}
+		else if (std::isdigit(s[i]) && std::isalpha(s[i + 1]))
+		{
+			animate(toSemaphoreAnimation(SemaphoreSignal::LettersToFollow));
+		}
+	}
+
+	animate(toSemaphoreAnimation(s.back())); // Last character
+	animate(toSemaphoreAnimation(SemaphoreSignal::ReadyToReceive)); // End signal
+
 	return true;
 }
 
@@ -167,127 +179,127 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(char signal) const
 	{
 		case 'a':
 		case '1':
-			return {Frame(Pose(-90, 90, 0, -90, 45, 0))};
+			return {{{-90, 90, 0, -90, 45, 0}, default_semaphore_delay}};
 			break;
 		case 'b':
 		case '2':
-			return {Frame(Pose(-90, 90, 0, 0, 0, 0))};
+			return {{{-90, 90, 0, 0, 0, 0}, default_semaphore_delay}};
 			break;
 		case 'c':
 		case '3':
-			return {Frame(Pose(-90, 90, 0, 90, 45, 0))};
+			return {{{-90, 90, 0, 90, 45, 0}, default_semaphore_delay}};
 			break;
 		case 'd':
 		case '4':
-			return {Frame(Pose(-90, 90, 0, 90, 90, 0))};
+			return {{{-90, 90, 0, 90, 90, 0}, default_semaphore_delay}};
 			break;
 		case 'e':
 		case '5':
-			return {Frame(Pose(90, 45, 0, -90, 90, 0))};
+			return {{{90, 45, 0, -90, 90, 0}, default_semaphore_delay}};
 			break;
 		case 'f':
 		case '6':
-			return {Frame(Pose(0, 0, 0, -90, 90, 0))};
+			return {{{0, 0, 0, -90, 90, 0}, default_semaphore_delay}};
 			break;
 		case 'g':
 		case '7':
-			return {Frame(Pose(-90, 45, 0, -90, 90, 0))};
+			return {{{-90, 45, 0, -90, 90, 0}, default_semaphore_delay}};
 			break;
 		case 'h':
 		case '8':
 			return
 			{
-				Frame(Pose(0, 90, 0, 0, 0, 0), 400),
-				Frame(Pose(-45, 90, 45, 0, 0, 0)),
-				Frame(Pose(0, 90, 0, 0, 0, 0), 300)
+				{{0, 90, 0, 0, 0, 0}, 400},
+				{{-45, 90, 45, 0, 0, 0}, default_semaphore_delay},
+				{{0, 90, 0, 0, 0, 0}, 300}
 			};
 			break;
 		case 'i':
 		case '9':
 			return
 			{
-				Frame(Pose(0, 90, 0, 0, 0, 0), 400),
-				Frame(Pose(-45, 90, 45, 90, 45, 0)),
-				Frame(Pose(0, 90, 0, 0, 0, 0), 300)
+				{{0, 90, 0, 0, 0, 0}, 400},
+				{{-45, 90, 45, 90, 45, 0}, default_semaphore_delay},
+				{{0, 90, 0, 0, 0, 0}, 300}
 			};
 			break;
 		case 'j':
-			return {Frame(Pose(0, 0, 0, 90, 90, 0))};
+			return {{{0, 0, 0, 90, 90, 0}, default_semaphore_delay}};
 			break;
 		case 'k':
 		case '0':
-			return {Frame(Pose(90, 90, 0, -90, 45, 0))};
+			return {{{90, 90, 0, -90, 45, 0}, default_semaphore_delay}};
 			break;
 		case 'l':
-			return {Frame(Pose(90, 45, 0, -90, 45, 0))};
+			return {{{90, 45, 0, -90, 45, 0}, default_semaphore_delay}};
 			break;
 		case 'm':
-			return {Frame(Pose(0, 0, 0, -90, 45, 0))};
+			return {{{0, 0, 0, -90, 45, 0}, default_semaphore_delay}};
 			break;
 		case 'n':
-			return {Frame(Pose(-90, 45, 0, -90, 45, 0))};
+			return {{{-90, 45, 0, -90, 45, 0}, default_semaphore_delay}};
 			break;
 		case 'o':
 			return
 			{
-				Frame(Pose(0, 90, 0, 0, 0, 0), 400),
-				Frame(Pose(45, 90, 45, 0, 0, 0)),
-				Frame(Pose(0, 90, 0, 0, 0, 0), 300)
+				{{0, 90, 0, 0, 0, 0}, 400},
+				{{45, 90, 45, 0, 0, 0}, default_semaphore_delay},
+				{{0, 90, 0, 0, 0, 0}, 300}
 			};
 			break;
 		case 'p':
-			return {Frame(Pose(90, 90, 0, 0, 0, 0))};
+			return {{{90, 90, 0, 0, 0, 0}, default_semaphore_delay}};
 			break;
 		case 'q':
-			return {Frame(Pose(90, 45, 0, 0, 0, 0))};
+			return {{{90, 45, 0, 0, 0, 0}, default_semaphore_delay}};
 			break;
 		case 'r':
-			return {Frame(Pose(0, 0, 0, 0, 0, 0))};
+			return {{{0, 0, 0, 0, 0, 0}, default_semaphore_delay}};
 			break;
 		case 's':
-			return {Frame(Pose(-90, 45, 0, 0, 0, 0))};
+			return {{{-90, 45, 0, 0, 0, 0}, default_semaphore_delay}};
 			break;
 		case 't':
-			return {Frame(Pose(90, 90, 0, 90, 45, 0))};
+			return {{{90, 90, 0, 90, 45, 0}, default_semaphore_delay}};
 			break;
 		case 'u':
-			return {Frame(Pose(90, 45, 0, 90, 45, 0))};
+			return {{{90, 45, 0, 90, 45, 0}, default_semaphore_delay}};
 			break;
 		case 'v':
-			return {Frame(Pose(-90, 45, 0, 90, 90, 0))};
+			return {{{-90, 45, 0, 90, 90, 0}, default_semaphore_delay}};
 			break;
 		case 'w':
 			return
 			{
-				Frame(Pose(0, 0, 0, 0, 90, 0), 400),
-				Frame(Pose(0, 0, 0, 45, 90, 45)),
-				Frame(Pose(0, 0, 0, 0, 90, 0), 300)
+				{{0, 0, 0, 0, 90, 0}, 400},
+				{{0, 0, 0, 45, 90, 45}, default_semaphore_delay},
+				{{0, 0, 0, 0, 90, 0}, 300}
 			};
 			break;
 		case 'x':
 			return
 			{
-				Frame(Pose(-90, 45, 0, 0, 90, 0), 400),
-				Frame(Pose(-90, 45, 0, 45, 90, 45)),
-				Frame(Pose(-90, 45, 0, 0, 90, 0), 300)
+				{{-90, 45, 0, 0, 90, 0}, 400},
+				{{-90, 45, 0, 45, 90, 45}, default_semaphore_delay},
+				{{-90, 45, 0, 0, 90, 0}, 300}
 			};
 			break;
 		case 'y':
-			return {Frame(Pose(0, 0, 0, 90, 45, 0))};
+			return {{{0, 0, 0, 90, 45, 0}, default_semaphore_delay}};
 			break;
 		case 'z':
 			return
 			{
-				Frame(Pose(0, 0, 0, 0, 90, 0), 400),
-				Frame(Pose(0, 0, 0, -45, 90, 45)),
-				Frame(Pose(0, 0, 0, 0, 90, 0), 300)
+				{{0, 0, 0, 0, 90, 0}, 400},
+				{{0, 0, 0, -45, 90, 45}, default_semaphore_delay},
+				{{0, 0, 0, 0, 90, 0}, 300}
 			};
 			break;
 		case ' ':
-			return {Frame(Pose(-90, 90, 0, -90, 90, 0))};
+			return {{{-90, 90, 0, -90, 90, 0}, default_semaphore_delay}};
 			break;
 		default:
-			return {Frame(Pose(0, 0, 0, 0, 0, 0))};
+			return {{{0, 0, 0, 0, 0, 0}, 0}};
 			break;
 	}
 }
@@ -299,35 +311,35 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(KHR_1::SemaphoreSignal signal
 		case SemaphoreSignal::Attention:
 			return
 			{
-				Frame(Pose(90, 45, 0, 90, 45, 0)),
-				Frame(Pose(-90, 45, 0, -90, 45, 0)),
-				Frame(Pose(90, 45, 0, 90, 45, 0)),
-				Frame(Pose(-90, 45, 0, -90, 45, 0)),
-				Frame(Pose(90, 45, 0, 90, 45, 0)),
-				Frame(Pose(-90, 45, 0, -90, 45, 0))
+				{{90, 45, 0, 90, 45, 0}, 500},
+				{{-90, 45, 0, -90, 45, 0}, 500},
+				{{90, 45, 0, 90, 45, 0}, 500},
+				{{-90, 45, 0, -90, 45, 0}, 500},
+				{{90, 45, 0, 90, 45, 0}, 500},
+				{{-90, 45, 0, -90, 45, 0}, 500}
 			};
 			break;
 		case SemaphoreSignal::ReadyToReceive:
 			return
 			{
-				Frame(Pose(90, 90, 0, 90, 90, 0)),
-				Frame(Pose(-90, 90, 0, -90, 90, 0))
+				{{90, 90, 0, 90, 90, 0}, 500},
+				{{-90, 90, 0, -90, 90, 0}, 500}
 			};
 			break;
 		case SemaphoreSignal::LettersToFollow:
 			return toSemaphoreAnimation('j');
 			break;
 		case SemaphoreSignal::NumbersToFollow:
-			return {Frame(Pose(90, 45, 0, 90, 90, 0))};
+			return {{{90, 45, 0, 90, 90, 0}, default_semaphore_delay}};
 			break;
 		case SemaphoreSignal::Rest:
 			return toSemaphoreAnimation(' ');
 			break;
 		case SemaphoreSignal::Cancel:
-			return {Frame(Pose(-90, 45, 0, 90, 45, 0))};
+			return {{{-90, 45, 0, 90, 45, 0}, default_semaphore_delay}};
 			break;
 		default:
-			return {Frame(Pose(0, 0, 0, 0, 0, 0))};
+			return {{{0, 0, 0, 0, 0, 0}, 0}};
 			break;
 	}
 }
@@ -342,7 +354,7 @@ void KHR_1::pose(const KHR_1::Pose & pose, int speed)
     pwm.setPWM(R_ELBOW,0,MAP(pose.right_elbow_angle));
 }
 
-// WIP
+/* WIP
 const KHR_1::Animation KHR_1::stringToSemaphoreAnimation(const std::string & s) const
 {
 	// Initialize the animation with the Attention signal
@@ -379,11 +391,29 @@ const KHR_1::Animation KHR_1::stringToSemaphoreAnimation(const std::string & s) 
 
 	return animation;
 }
+*/
 
 void KHR_1::animate(const Animation & animation)
 {
 	for (auto & frame : animation)
 	{
+		/*
+		Serial.print("Posing: ");
+		Serial.print(frame.pose.left_s_pitch_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.left_s_roll_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.left_elbow_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.right_s_pitch_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.right_s_roll_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.right_elbow_angle);
+		Serial.print("\nDelaying: ");
+		Serial.print(frame.duration);
+		Serial.print("\n");
+		*/
 		pose(frame.pose);
 		delay(frame.duration);
 	}
