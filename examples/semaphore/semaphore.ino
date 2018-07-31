@@ -4,8 +4,8 @@
 KHR_1 khr;
 
 void setup() {
-	khr.attach();
   Serial.begin(9600);
+	khr.init();
 }
 
 void loop() {
