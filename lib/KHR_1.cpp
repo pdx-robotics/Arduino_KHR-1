@@ -1,97 +1,63 @@
-/* 
- * KHR_1.cpp - Library to control the 
- * Kondo KHR_1.
- *
- * Created by Aaron Chan, April 11, 2018
+/*
+ * KHR_1.h - Library to control the Kondo KHR_1.
  *
  * The KHR_1 servo channels have been renumbered for this Arduino
- * implementation. These numbers do not necessarily correspond 
- * with physical pins on the board:
+ * implementation using the PCA9865 Servo Driver. 
  *
- * | Part           | Right | Left  |
+ * Because the servo driver can only support 16 servos,
+ * we will control the head with a pin on the Arduino board.
+ *
+ * | Part           | Left  | Right |
  * |================|=======|=======|
- * | Shoulder Pitch |   1   |   2   |
- * | Shoulder Roll  |   3   |   4   |
- * | Elbow          |   5   |   6   |
- * | Hip Roll       |   7   |   8   |
- * | Hip Pitch      |   9   |  10   |
- * | Knee           |  11   |  12   |
- * | Ankle Pitch    |  13   |  14   |
- * | Ankle Roll     |  15   |  16   |
- * | Head Pan       |  17   |
- *
- *
-*/
+ * | Shoulder Pitch |   0   |  15   |
+ * | Shoulder Roll  |   1   |  14   |
+ * | Elbow          |   2   |  13   |
+ * | Hip Roll       |   3   |  12   |
+ * | Hip Pitch      |   4   |  11   |
+ * | Knee           |   5   |  10   |
+ * | Ankle Pitch    |   6   |   9   |
+ * | Ankle Roll     |   7   |   8   |
+ * | Head Pan       |  ??   |
+ * 
+ * Created by Aaron Chan, April 11, 2018
+ * Semaphore by Ha Ly
+ * Modified by Aaron Chan, July 28, 2018
+ */
 #include "Arduino.h"
 #include "KHR_1.h"
 #include <cctype>
 
 KHR_1::KHR_1()
 {
-	// attach();
 }
 
 KHR_1::~KHR_1()
 {
-//	detach();
 }
-KHR_1::setup()
+
+void KHR_1::init()
 {
     pwm.begin();
-    pwm.setPWMFreq(60);
+    pwm.setPWMFreq(FREQ);
     delay(10);
 }
+
+void KHR_1::stand()
+{
+   pwm.setPWM(L_H_ROLL ,0,MAP(95));
+   pwm.setPWM(L_H_PITCH,0,MAP(20));
+   pwm.setPWM(L_KNEE   ,0,MAP(0));
+   pwm.setPWM(L_A_PITCH,0,MAP(115));
+   pwm.setPWM(L_A_ROLL ,0,MAP(90));
+   
+   pwm.setPWM(R_H_ROLL ,0,MAP(90));
+   pwm.setPWM(R_H_PITCH,0,MAP(160));
+   pwm.setPWM(R_KNEE   ,0,MAP(180));
+   pwm.setPWM(R_A_PITCH,0,MAP(65));
+   pwm.setPWM(R_A_ROLL ,0,MAP(95));
+}
+
 /*
-void KHR_1::attach()
-{
-	left_s_pitch.attach(L_S_PITCH);
-	left_s_roll.attach(L_S_ROLL);
-	left_elbow.attach(L_ELBOW);
-
-	right_s_pitch.attach(R_S_PITCH);
-	right_s_roll.attach(R_S_ROLL);
-	right_elbow.attach(R_ELBOW);
-
-	left_h_roll.attach(L_H_ROLL);
-	left_h_pitch.attach(L_H_PITCH);
-	left_knee.attach(L_KNEE);
-	left_a_pitch.attach(L_A_PITCH);
-	left_a_roll.attach(L_A_ROLL);
-
-	right_h_roll.attach(R_H_ROLL);
-	right_h_pitch.attach(R_H_PITCH);
-	right_knee.attach(R_KNEE);
-	right_a_pitch.attach(R_A_PITCH);
-	right_a_roll.attach(R_A_ROLL);
-
-	head_pan.attach(HEAD);
-}
-
-void KHR_1::detach()
-{
-	left_s_pitch.detach();
-	left_s_roll.detach();
-	left_elbow.detach();
-
-	right_s_pitch.detach();
-	right_s_roll.detach();
-	right_elbow.detach();
-
-	left_h_roll.detach();
-	left_h_pitch.detach();
-	left_knee.detach();
-	left_a_pitch.detach();
-	left_a_roll.detach();
-
-	right_h_roll.detach();
-	right_h_pitch.detach();
-	right_knee.detach();
-	right_a_pitch.detach();
-	right_a_roll.detach();
-
-	head_pan.detach();
-}
-
 // Wave with left hand
 void KHR_1::left_wave()
 {
@@ -374,14 +340,6 @@ void KHR_1::pose(const KHR_1::Pose & pose, int speed)
     pwm.setPWM(R_S_PITCH,0,MAP(pose.right_s_pitch_angle));
     pwm.setPWM(R_S_ROLL,0,MAP(pose.right_s_roll_angle));
     pwm.setPWM(R_ELBOW,0,MAP(pose.right_elbow_angle));
-/*
-    left_s_pitch.write(pose.left_s_pitch_angle, speed, true);
-	left_s_roll.write(pose.left_s_roll_angle, speed, true);
-	left_elbow.write(pose.left_elbow_angle, speed, true);
-	right_s_pitch.write(pose.right_s_pitch_angle, speed, true);
-	right_s_roll.write(pose.right_s_roll_angle, speed, true);
-	right_elbow.write(pose.right_elbow_angle, speed, true);
-    */
 }
 
 // WIP

@@ -1,74 +1,76 @@
 /*
- * KHR_1.h - Library to control the
- * Kondo KHR_1.
- *
- * Created by Aaron Chan, April 11, 2018
+ * KHR_1.h - Library to control the Kondo KHR_1.
  *
  * The KHR_1 servo channels have been renumbered for this Arduino
- * implementation. These numbers do not necessarily correspond
- * with physical pins on the board:
+ * implementation using the PCA9865 Servo Driver. 
  *
- * | Part           | Right | Left  |
+ * Because the servo driver can only support 16 servos,
+ * we will control the head with a pin on the Arduino board.
+ *
+ * | Part           | Left  | Right |
  * |================|=======|=======|
- * | Shoulder Pitch |   1   |   2   |
- * | Shoulder Roll  |   3   |   4   |
- * | Elbow          |   5   |   6   |
- * | Hip Roll       |   7   |   8   |
- * | Hip Pitch      |   9   |  10   |
- * | Knee           |  11   |  12   |
- * | Ankle Pitch    |  13   |  14   |
- * | Ankle Roll     |  15   |  16   |
- * | Head Pan       |  17   |
+ * | Shoulder Pitch |   0   |  15   |
+ * | Shoulder Roll  |   1   |  14   |
+ * | Elbow          |   2   |  13   |
+ * | Hip Roll       |   3   |  12   |
+ * | Hip Pitch      |   4   |  11   |
+ * | Knee           |   5   |  10   |
+ * | Ankle Pitch    |   6   |   9   |
+ * | Ankle Roll     |   7   |   8   |
+ * | Head Pan       |  ??   |
+ * 
+ * Created by Aaron Chan, April 11, 2018
+ * Semaphore by Ha Ly
+ * Modified by Aaron Chan, July 28, 2018
  */
 
 #ifndef KHR_1_H
 #define KHR_1_H
 
 #include "Arduino.h"
+#include <Adafruit_PWMServoDriver.h>
+#include <VarSpeedServo.h>
 #include <StandardCplusplus.h>
-//#include <VarSpeedServo.h>
 #include <string>
 #include <vector>
 
-// Needed for servo driver
-#include <Adafruit_PWMServoDriver.h>
+// Servo Driver Channels
+#define R_S_PITCH 15
+#define R_S_ROLL  14
+#define R_ELBOW   13
+#define R_H_ROLL  12
+#define R_H_PITCH 11
+#define R_KNEE    10 
+#define R_A_PITCH  9
+#define R_A_ROLL   8
 
-// Arduino board pins
-#define L_S_PITCH 2
-#define R_S_PITCH 3
-#define L_S_ROLL  4
-#define R_S_ROLL  5
-#define L_ELBOW   6
-#define R_ELBOW   7
-#define HEAD      8
+#define L_S_PITCH  0
+#define L_S_ROLL   1
+#define L_ELBOW    2 
+#define L_H_ROLL   3
+#define L_H_PITCH  4
+#define L_KNEE     5
+#define L_A_PITCH  6
+#define L_A_ROLL   7
 
-/*
-#define L_H_ROLL
-#define R_H_ROLL
-#define L_H_PITCH
-#define R_H_PITCH
-#define L_KNEE
-#define R_KNEE
-#define L_A_PITCH
-#define R_A_PITCH
-#define L_A_ROLL
-#define R_A_ROLL
-*/
+//#define HEAD      
 
-#define PULSELEN 60
-#define MAP(d) map(d,0,180,0,720)
+// Range of values to work with KRS-784 ICS servos
+#define DMAX 530
+#define DMIN 160
+#define FREQ 60
+#define MAP(d) map(d,0,180, DMIN, DMAX)
+#define DWRITE(channel, d) pwm.setPWM(channel,0,MAP(d))
 
 class KHR_1
 {
 public:
 	KHR_1();
 	~KHR_1();
-    setup();
-/*
-	// setup functions
-	void attach();
-	void detach();
 
+    void init();
+    void stand();
+/*
 	// Used to demonstrate what certain values do.
 
 	// Hardcoded actions
@@ -76,9 +78,6 @@ public:
 	void right_wave();
 	void both_wave();
 	void stand();
-	void robot_dance();
-	void cheer();
-	void flex_arms();
 */
 	// Semaphore a string, return false on invalid string
 	// Valid string contains only letters and spaces
@@ -119,31 +118,10 @@ private:
 	void pose(const Pose & pose, int speed = default_speed);
 	// void semaphore(char ch);
 
+    // KHR-1 servo control
     Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
-	// KHR_1 servos
-	/* Not needed for servo driver
-    VarSpeedServo left_s_pitch;
-	VarSpeedServo left_s_roll;
-	VarSpeedServo left_elbow;
-
-	VarSpeedServo right_s_pitch;
-	VarSpeedServo right_s_roll;
-	VarSpeedServo right_elbow;
-
-	VarSpeedServo left_h_roll;
-	VarSpeedServo left_h_pitch;
-	VarSpeedServo left_knee;
-	VarSpeedServo left_a_pitch;
-	VarSpeedServo left_a_roll;
-
-	VarSpeedServo right_h_roll;
-	VarSpeedServo right_h_pitch;
-	VarSpeedServo right_knee;
-	VarSpeedServo right_a_pitch;
-	VarSpeedServo right_a_roll;
-
-	VarSpeedServo head_pan;
-    */
+    //VarSpeedServo head_pan;
+    
 };
 
 #endif
