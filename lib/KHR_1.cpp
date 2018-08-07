@@ -44,17 +44,17 @@ void KHR_1::init()
 
 void KHR_1::stand()
 {
-   pwm.setPWM(L_H_ROLL ,0,MAP(95));
-   pwm.setPWM(L_H_PITCH,0,MAP(20));
-   pwm.setPWM(L_KNEE   ,0,MAP(0));
-   pwm.setPWM(L_A_PITCH,0,MAP(115));
-   pwm.setPWM(L_A_ROLL ,0,MAP(90));
-   
-   pwm.setPWM(R_H_ROLL ,0,MAP(90));
-   pwm.setPWM(R_H_PITCH,0,MAP(160));
-   pwm.setPWM(R_KNEE   ,0,MAP(180));
-   pwm.setPWM(R_A_PITCH,0,MAP(65));
-   pwm.setPWM(R_A_ROLL ,0,MAP(95));
+	pwm.setPWM(L_H_ROLL, 0, MAP(95));
+	pwm.setPWM(L_H_PITCH, 0, MAP(20));
+	pwm.setPWM(L_KNEE, 0, MAP(0));
+	pwm.setPWM(L_A_PITCH, 0, MAP(115));
+	pwm.setPWM(L_A_ROLL, 0, MAP(90));
+
+	pwm.setPWM(R_H_ROLL, 0, MAP(90));
+	pwm.setPWM(R_H_PITCH, 0, MAP(160));
+	pwm.setPWM(R_KNEE, 0, MAP(180));
+	pwm.setPWM(R_A_PITCH, 0, MAP(65));
+	pwm.setPWM(R_A_ROLL, 0, MAP(95));
 }
 
 /*
@@ -346,12 +346,12 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(KHR_1::SemaphoreSignal signal
 
 void KHR_1::pose(const KHR_1::Pose & pose, int speed)
 {
-    pwm.setPWM(L_S_PITCH,0,MAP(pose.left_s_pitch_angle));
-    pwm.setPWM(L_S_ROLL,0,MAP(pose.left_s_roll_angle));
-    pwm.setPWM(L_ELBOW,0,MAP(pose.left_elbow_angle));
-    pwm.setPWM(R_S_PITCH,0,MAP(pose.right_s_pitch_angle));
-    pwm.setPWM(R_S_ROLL,0,MAP(pose.right_s_roll_angle));
-    pwm.setPWM(R_ELBOW,0,MAP(pose.right_elbow_angle));
+	pwm.setPWM(L_S_PITCH, 0, MAP(pose.left_s_pitch_angle));
+	pwm.setPWM(L_S_ROLL, 0, MAP(pose.left_s_roll_angle));
+	pwm.setPWM(L_ELBOW, 0, MAP(pose.left_elbow_angle));
+	pwm.setPWM(R_S_PITCH, 0, MAP(pose.right_s_pitch_angle));
+	pwm.setPWM(R_S_ROLL, 0, MAP(pose.right_s_roll_angle));
+	pwm.setPWM(R_ELBOW, 0, MAP(pose.right_elbow_angle));
 }
 
 /* WIP
