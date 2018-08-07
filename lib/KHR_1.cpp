@@ -363,16 +363,26 @@ void KHR_1::pose(const KHR_1::Pose & pose, int speed)
 	pwm.setPWM(L_S_PITCH, 0, MAP(pose.left_s_pitch_angle));
 	pwm.setPWM(L_S_ROLL, 0, MAP(pose.left_s_roll_angle));
 	pwm.setPWM(L_ELBOW, 0, MAP(pose.left_elbow_angle));
+	pwm.setPWM(L_H_ROLL, 0, MAP(pose.left_h_roll_angle));
+	pwm.setPWM(L_H_PITCH, 0, MAP(pose.left_h_pitch_angle));
+	pwm.setPWM(L_KNEE, 0, MAP(pose.left_knee_angle));
+	pwm.setPWM(L_A_PITCH, 0, MAP(pose.left_a_pitch_angle));
+	pwm.setPWM(L_A_ROLL, 0, MAP(pose.left_a_roll_angle));
+
 	pwm.setPWM(R_S_PITCH, 0, MAP(pose.right_s_pitch_angle));
 	pwm.setPWM(R_S_ROLL, 0, MAP(pose.right_s_roll_angle));
 	pwm.setPWM(R_ELBOW, 0, MAP(pose.right_elbow_angle));
+	pwm.setPWM(R_H_ROLL, 0, MAP(pose.right_h_roll_angle));
+	pwm.setPWM(R_H_PITCH, 0, MAP(pose.right_h_pitch_angle));
+	pwm.setPWM(R_KNEE, 0, MAP(pose.right_knee_angle));
+	pwm.setPWM(R_A_PITCH, 0, MAP(pose.right_a_pitch_angle));
+	pwm.setPWM(R_A_ROLL, 0, MAP(pose.right_a_roll_angle));
 }
 
 void KHR_1::animate(const Animation & animation)
 {
 	for (auto & frame : animation)
 	{
-		/*
 		Serial.print("Posing: ");
 		Serial.print(frame.pose.left_s_pitch_angle);
 		Serial.print(", ");
@@ -380,15 +390,37 @@ void KHR_1::animate(const Animation & animation)
 		Serial.print(", ");
 		Serial.print(frame.pose.left_elbow_angle);
 		Serial.print(", ");
+		Serial.print(frame.pose.left_h_roll_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.left_h_pitch_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.left_knee_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.left_a_pitch_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.left_a_roll_angle);
+		Serial.print(", ");
+
 		Serial.print(frame.pose.right_s_pitch_angle);
 		Serial.print(", ");
 		Serial.print(frame.pose.right_s_roll_angle);
 		Serial.print(", ");
 		Serial.print(frame.pose.right_elbow_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.right_h_roll_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.right_h_pitch_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.right_knee_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.right_a_pitch_angle);
+		Serial.print(", ");
+		Serial.print(frame.pose.right_a_roll_angle);
+
 		Serial.print("\nDelaying: ");
 		Serial.print(frame.duration);
 		Serial.print("\n");
-		*/
+
 		pose(frame.pose);
 		delay(frame.duration);
 	}
