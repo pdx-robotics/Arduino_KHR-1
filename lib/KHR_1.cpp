@@ -122,13 +122,27 @@ void KHR_1::both_wave()
 
 // WIP
 KHR_1::Pose::Pose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_angle,
-	int right_s_pitch_angle, int right_s_roll_angle, int right_elbow_angle) :
+	int left_h_roll_angle, int left_h_pitch_angle, int left_knee_angle,
+	int left_a_pitch_angle, int left_a_roll_angle,
+	int right_s_pitch_angle, int right_s_roll_angle, int right_elbow_angle,
+	int right_h_roll_angle, int right_h_pitch_angle, int right_knee_angle,
+	int right_a_pitch_angle, int right_a_roll_angle) :
 		left_s_pitch_angle{left_s_pitch_angle + 90},
 		left_s_roll_angle{- left_s_roll_angle + 90},
 		left_elbow_angle{- left_elbow_angle + 90},
+		left_h_roll_angle{left_h_roll_angle}, // Needs conversion
+		left_h_pitch_angle{left_h_pitch_angle}, // Needs conversion
+		left_knee_angle{left_knee_angle}, // Needs conversion
+		left_a_pitch_angle{left_a_pitch_angle}, // Needs conversion
+		left_a_roll_angle{left_a_roll_angle}, // Needs conversion
 		right_s_pitch_angle{- right_s_pitch_angle + 90},
 		right_s_roll_angle{right_s_roll_angle + 90},
-		right_elbow_angle{right_elbow_angle + 90}
+		right_elbow_angle{right_elbow_angle + 90},
+		right_h_roll_angle{right_h_roll_angle}, // Needs conversion
+		right_h_pitch_angle{right_h_pitch_angle}, // Needs conversion
+		right_knee_angle{right_knee_angle}, // Needs conversion
+		right_a_pitch_angle{right_a_pitch_angle}, // Needs conversion
+		right_a_roll_angle{right_a_roll_angle} // Needs conversion
 {}
 
 // Check if string is valid, then semaphore each letter
@@ -174,7 +188,7 @@ bool KHR_1::semaphore(const std::string & s)
 // const KHR_1::Pose KHR_1::toSemaphorePose(char ch) const
 const KHR_1::Animation KHR_1::toSemaphoreAnimation(char signal) const
 {
-	// WIP Determine pose coordinates
+	// WIP Need legs coordinates
 	switch (signal)
 	{
 		case 'a':
