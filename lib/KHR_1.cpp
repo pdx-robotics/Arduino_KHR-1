@@ -354,45 +354,6 @@ void KHR_1::pose(const KHR_1::Pose & pose, int speed)
 	pwm.setPWM(R_ELBOW, 0, MAP(pose.right_elbow_angle));
 }
 
-/* WIP
-const KHR_1::Animation KHR_1::stringToSemaphoreAnimation(const std::string & s) const
-{
-	// Initialize the animation with the Attention signal
-	Animation animation{toSemaphoreAnimation(SemaphoreSignal::Attention)};
-
-	// Add animation for every char, plus extra animations for starting numbers or letters
-	for (size_t i{0}; i < s.size() - 1; i++)
-	{
-		// Add signal for the current character
-		Animation charSignal{toSemaphoreAnimation(s[i])};
-		animation.insert(animation.end(), charSignal.begin(), charSignal.end());
-		
-		// Add a "Numbers to Follow" signal if the next character is a number
-		if (std::isalpha(s[i]) && std::isdigit(s[i + 1]))
-		{
-			Animation numberSignal{toSemaphoreAnimation(SemaphoreSignal::NumbersToFollow)};
-			animation.insert(animation.end(), numberSignal.begin(), numberSignal.end());
-		}
-		// Add a "Letters to Follow" signal if the next character is a letter
-		else if (std::isdigit(s[i]) && std::isalpha(s[i + 1]))
-		{
-			Animation letterSignal{toSemaphoreAnimation(SemaphoreSignal::LettersToFollow)};
-			animation.insert(animation.end(), letterSignal.begin(), letterSignal.end());
-		}
-	}
-
-	// Add signal for the last character
-	Animation lastCharSignal{toSemaphoreAnimation(s.back())};
-	animation.insert(animation.end(), lastCharSignal.begin(), lastCharSignal.end());
-
-	// Add "End of Message" or "Ready to Receive" signal
-	Animation endSignal{toSemaphoreAnimation(SemaphoreSignal::ReadyToReceive)};
-	animation.insert(animation.end(), endSignal.begin(), endSignal.end());
-
-	return animation;
-}
-*/
-
 void KHR_1::animate(const Animation & animation)
 {
 	for (auto & frame : animation)
