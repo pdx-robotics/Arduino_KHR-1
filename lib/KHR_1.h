@@ -29,7 +29,7 @@
 
 #include "Arduino.h"
 #include <Adafruit_PWMServoDriver.h>
-#include <VarSpeedServo.h>
+// #include <VarSpeedServo.h>
 #include <StandardCplusplus.h>
 #include <string>
 #include <vector>
@@ -88,7 +88,7 @@ private:
 
 	struct Pose
 	{
-		int left_s_pitch_angle, left_s_roll_angle, left_elbow_angle,
+		char left_s_pitch_angle, left_s_roll_angle, left_elbow_angle,
 		    left_h_roll_angle, left_h_pitch_angle, left_knee_angle,
 			left_a_pitch_angle, left_a_roll_angle,
 			right_s_pitch_angle, right_s_roll_angle, right_elbow_angle,
