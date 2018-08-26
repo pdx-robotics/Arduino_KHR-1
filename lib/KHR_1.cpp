@@ -120,31 +120,6 @@ void KHR_1::both_wave()
 }
 */
 
-// WIP
-KHR_1::Pose::Pose(int left_s_pitch_angle, int left_s_roll_angle, int left_elbow_angle,
-	int left_h_roll_angle, int left_h_pitch_angle, int left_knee_angle,
-	int left_a_pitch_angle, int left_a_roll_angle,
-	int right_s_pitch_angle, int right_s_roll_angle, int right_elbow_angle,
-	int right_h_roll_angle, int right_h_pitch_angle, int right_knee_angle,
-	int right_a_pitch_angle, int right_a_roll_angle) :
-		left_s_pitch_angle{left_s_pitch_angle + 90},
-		left_s_roll_angle{- left_s_roll_angle + 90},
-		left_elbow_angle{- left_elbow_angle + 90},
-		left_h_roll_angle{left_h_roll_angle}, // Needs conversion
-		left_h_pitch_angle{left_h_pitch_angle}, // Needs conversion
-		left_knee_angle{left_knee_angle}, // Needs conversion
-		left_a_pitch_angle{left_a_pitch_angle}, // Needs conversion
-		left_a_roll_angle{left_a_roll_angle}, // Needs conversion
-		right_s_pitch_angle{- right_s_pitch_angle + 90},
-		right_s_roll_angle{right_s_roll_angle + 90},
-		right_elbow_angle{right_elbow_angle + 90},
-		right_h_roll_angle{right_h_roll_angle}, // Needs conversion
-		right_h_pitch_angle{right_h_pitch_angle}, // Needs conversion
-		right_knee_angle{right_knee_angle}, // Needs conversion
-		right_a_pitch_angle{right_a_pitch_angle}, // Needs conversion
-		right_a_roll_angle{right_a_roll_angle} // Needs conversion
-{}
-
 // Check if string is valid, then semaphore each letter
 bool KHR_1::semaphore(const std::string & s)
 {
@@ -358,25 +333,26 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(KHR_1::SemaphoreSignal signal
 	}
 }
 
+// Tranlate the pose from standard to actual servo values, then move the servos
 void KHR_1::pose(const KHR_1::Pose & pose, int speed)
 {
-	pwm.setPWM(L_S_PITCH, 0, MAP(pose.left_s_pitch_angle));
-	pwm.setPWM(L_S_ROLL, 0, MAP(pose.left_s_roll_angle));
-	pwm.setPWM(L_ELBOW, 0, MAP(pose.left_elbow_angle));
-	pwm.setPWM(L_H_ROLL, 0, MAP(pose.left_h_roll_angle));
-	pwm.setPWM(L_H_PITCH, 0, MAP(pose.left_h_pitch_angle));
-	pwm.setPWM(L_KNEE, 0, MAP(pose.left_knee_angle));
-	pwm.setPWM(L_A_PITCH, 0, MAP(pose.left_a_pitch_angle));
-	pwm.setPWM(L_A_ROLL, 0, MAP(pose.left_a_roll_angle));
+	pwm.setPWM(L_S_PITCH, 0, MAP(pose.left_s_pitch_angle + 90));
+	pwm.setPWM(L_S_ROLL, 0, MAP(- pose.left_s_roll_angle + 90));
+	pwm.setPWM(L_ELBOW, 0, MAP(- pose.left_elbow_angle + 90));
+	pwm.setPWM(L_H_ROLL, 0, MAP(- pose.left_h_roll_angle + 90));
+	pwm.setPWM(L_H_PITCH, 0, MAP(- pose.left_h_pitch_angle + 90));
+	pwm.setPWM(L_KNEE, 0, MAP(pose.left_knee_angle + 90));
+	pwm.setPWM(L_A_PITCH, 0, MAP(pose.left_a_pitch_angle + 90));
+	pwm.setPWM(L_A_ROLL, 0, MAP(pose.left_a_roll_angle + 90));
 
-	pwm.setPWM(R_S_PITCH, 0, MAP(pose.right_s_pitch_angle));
-	pwm.setPWM(R_S_ROLL, 0, MAP(pose.right_s_roll_angle));
-	pwm.setPWM(R_ELBOW, 0, MAP(pose.right_elbow_angle));
-	pwm.setPWM(R_H_ROLL, 0, MAP(pose.right_h_roll_angle));
-	pwm.setPWM(R_H_PITCH, 0, MAP(pose.right_h_pitch_angle));
-	pwm.setPWM(R_KNEE, 0, MAP(pose.right_knee_angle));
-	pwm.setPWM(R_A_PITCH, 0, MAP(pose.right_a_pitch_angle));
-	pwm.setPWM(R_A_ROLL, 0, MAP(pose.right_a_roll_angle));
+	pwm.setPWM(R_S_PITCH, 0, MAP(- pose.right_s_pitch_angle + 90));
+	pwm.setPWM(R_S_ROLL, 0, MAP(pose.right_s_roll_angle + 90));
+	pwm.setPWM(R_ELBOW, 0, MAP(pose.right_elbow_angle + 90));
+	pwm.setPWM(R_H_ROLL, 0, MAP(pose.right_h_roll_angle + 90));
+	pwm.setPWM(R_H_PITCH, 0, MAP(pose.right_h_pitch_angle + 90));
+	pwm.setPWM(R_KNEE, 0, MAP(- pose.right_knee_angle + 90));
+	pwm.setPWM(R_A_PITCH, 0, MAP(- pose.right_a_pitch_angle + 90));
+	pwm.setPWM(R_A_ROLL, 0, MAP(- pose.right_a_roll_angle + 90));
 }
 
 void KHR_1::animate(const Animation & animation)
