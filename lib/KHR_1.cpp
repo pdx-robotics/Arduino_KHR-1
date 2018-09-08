@@ -360,38 +360,38 @@ void KHR_1::animate(const Animation & animation)
 	for (auto & frame : animation)
 	{
 		Serial.print("Posing: ");
-		Serial.print(frame.pose.left_s_pitch_angle);
+		Serial.print(static_cast<int>(frame.pose.left_s_pitch_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.left_s_roll_angle);
+		Serial.print(static_cast<int>(frame.pose.left_s_roll_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.left_elbow_angle);
+		Serial.print(static_cast<int>(frame.pose.left_elbow_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.left_h_roll_angle);
+		Serial.print(static_cast<int>(frame.pose.left_h_roll_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.left_h_pitch_angle);
+		Serial.print(static_cast<int>(frame.pose.left_h_pitch_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.left_knee_angle);
+		Serial.print(static_cast<int>(frame.pose.left_knee_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.left_a_pitch_angle);
+		Serial.print(static_cast<int>(frame.pose.left_a_pitch_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.left_a_roll_angle);
+		Serial.print(static_cast<int>(frame.pose.left_a_roll_angle));
 		Serial.print(", ");
 
-		Serial.print(frame.pose.right_s_pitch_angle);
+		Serial.print(static_cast<int>(frame.pose.right_s_pitch_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.right_s_roll_angle);
+		Serial.print(static_cast<int>(frame.pose.right_s_roll_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.right_elbow_angle);
+		Serial.print(static_cast<int>(frame.pose.right_elbow_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.right_h_roll_angle);
+		Serial.print(static_cast<int>(frame.pose.right_h_roll_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.right_h_pitch_angle);
+		Serial.print(static_cast<int>(frame.pose.right_h_pitch_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.right_knee_angle);
+		Serial.print(static_cast<int>(frame.pose.right_knee_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.right_a_pitch_angle);
+		Serial.print(static_cast<int>(frame.pose.right_a_pitch_angle));
 		Serial.print(", ");
-		Serial.print(frame.pose.right_a_roll_angle);
+		Serial.print(static_cast<int>(frame.pose.right_a_roll_angle));
 
 		Serial.print("\nDelaying: ");
 		Serial.print(frame.duration);
