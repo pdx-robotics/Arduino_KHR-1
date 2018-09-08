@@ -132,30 +132,44 @@ bool KHR_1::semaphore(const std::string & s)
 		}
 	}
 
+	Serial.print(F("\nSignaling: Attention\n"));
 	animate(toSemaphoreAnimation(SemaphoreSignal::Attention)); // Begin signal
 
 	// Signal if first character is a number
 	if (std::isdigit(s[0]))
 	{
+		Serial.print(F("\nSignaling: Numbers to Follow\n"));
 		animate(toSemaphoreAnimation(SemaphoreSignal::NumbersToFollow));
 	}
 	
 	for (size_t i{0}; i < s.size() - 1; i++)
 	{
+		Serial.print(F("\nSignaling: "));
+		Serial.print(s[i]);
+		Serial.print(F("\n"));
 		animate(toSemaphoreAnimation(s[i]));
 
 		if (std::isalpha(s[i]) && std::isdigit(s[i + 1]))
 		{
+			Serial.print(F("\nSignaling: Numbers to Follow\n"));
 			animate(toSemaphoreAnimation(SemaphoreSignal::NumbersToFollow));
 		}
 		else if (std::isdigit(s[i]) && std::isalpha(s[i + 1]))
 		{
+			Serial.print(F("\nSignaling: Letters to Follow\n"));
 			animate(toSemaphoreAnimation(SemaphoreSignal::LettersToFollow));
 		}
 	}
 
-	animate(toSemaphoreAnimation(s.back())); // Last character
-	animate(toSemaphoreAnimation(SemaphoreSignal::ReadyToReceive)); // End signal
+	// Last character
+	Serial.print(F("\nSignaling: "));
+	Serial.print(s.back());
+	Serial.print(F("\n"));
+	animate(toSemaphoreAnimation(s.back()));
+
+	// End signal
+	Serial.print(F("\nSignaling: Ready to Receive\n"));
+	animate(toSemaphoreAnimation(SemaphoreSignal::ReadyToReceive));
 
 	return true;
 }
@@ -359,43 +373,43 @@ void KHR_1::animate(const Animation & animation)
 {
 	for (auto & frame : animation)
 	{
-		Serial.print("Posing: ");
+		Serial.print(F("Posing: "));
 		Serial.print(static_cast<int>(frame.pose.left_s_pitch_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.left_s_roll_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.left_elbow_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.left_h_roll_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.left_h_pitch_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.left_knee_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.left_a_pitch_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.left_a_roll_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 
 		Serial.print(static_cast<int>(frame.pose.right_s_pitch_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.right_s_roll_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.right_elbow_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.right_h_roll_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.right_h_pitch_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.right_knee_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.right_a_pitch_angle));
-		Serial.print(", ");
+		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.right_a_roll_angle));
 
-		Serial.print("\nDelaying: ");
+		Serial.print(F("\nDelaying: "));
 		Serial.print(frame.duration);
-		Serial.print("\n");
+		Serial.print(F("\n"));
 
 		pose(frame.pose);
 		delay(frame.duration);
