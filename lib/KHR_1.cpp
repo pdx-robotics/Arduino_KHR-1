@@ -348,7 +348,7 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(KHR_1::SemaphoreSignal signal
 }
 
 // Tranlate the pose from standard to actual servo values, then move the servos
-void KHR_1::pose(const KHR_1::Pose & pose, int speed)
+void KHR_1::pose(const KHR_1::Pose & pose)
 {
 	pwm.setPWM(L_S_PITCH, 0, MAP(pose.left_s_pitch_angle + 90));
 	pwm.setPWM(L_S_ROLL, 0, MAP(- pose.left_s_roll_angle + 90));

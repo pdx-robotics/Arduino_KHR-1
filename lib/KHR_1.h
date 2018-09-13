@@ -29,7 +29,6 @@
 
 #include "Arduino.h"
 #include <Adafruit_PWMServoDriver.h>
-// #include <VarSpeedServo.h>
 #include <StandardCplusplus.h>
 #include <string>
 #include <vector>
@@ -83,7 +82,6 @@ public:
 	// Valid string contains only letters and spaces
 	bool semaphore(const std::string & s);
 private:
-	static const int default_speed = 0;
 	static const int default_semaphore_delay = 1000;
 
 	struct Pose
@@ -110,12 +108,10 @@ private:
 
 	const Animation toSemaphoreAnimation(char signal) const;
 	const Animation toSemaphoreAnimation(SemaphoreSignal signal) const;
-	void pose(const Pose & pose, int speed = default_speed);
+	void pose(const Pose & pose);
 
     // KHR-1 servo control
     Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
-    //VarSpeedServo head_pan;
-    
 };
 
 #endif
