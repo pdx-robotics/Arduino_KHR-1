@@ -159,6 +159,13 @@ bool KHR_1::semaphore(const std::string & s)
 			Serial.print(F("\nSignaling: Letters to Follow\n"));
 			animate(toSemaphoreAnimation(SemaphoreSignal::LettersToFollow));
 		}
+
+		// Signal if next character is the same as current one
+		if (s[i] == s[i + 1])
+		{
+			Serial.print(F("\nSignaling: Between Same Letters\n"));
+			animate(toSemaphoreAnimation(SemaphoreSignal::BetweenSameLetters));
+		}
 	}
 
 	// Last character
@@ -340,6 +347,9 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(KHR_1::SemaphoreSignal signal
 			break;
 		case SemaphoreSignal::Cancel:
 			return {{{-90, 45, 0, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			break;
+		case SemaphoreSignal::BetweenSameLetters:
+			return {{{0, 90, 45, 2, 30, -65, 40, -5, 0, 90, 45, 2, 30, -65, 40, -5}, 200}};
 			break;
 		default:
 			return {{{0, 0, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, 0}};

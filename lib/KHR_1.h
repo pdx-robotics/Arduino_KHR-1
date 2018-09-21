@@ -100,7 +100,16 @@ private:
 		int duration;
 	};
 
-	enum class SemaphoreSignal {LettersToFollow, NumbersToFollow, Attention, Rest, ReadyToReceive, Cancel};
+	enum class SemaphoreSignal
+	{
+		LettersToFollow,
+		NumbersToFollow,
+		Attention,
+		Rest,
+		ReadyToReceive,
+		Cancel,
+		BetweenSameLetters
+	};
 
 	typedef std::vector<Frame> Animation;
 
