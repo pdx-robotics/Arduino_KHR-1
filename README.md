@@ -13,7 +13,7 @@ We will not be using the RCB-1 for this project. Servo Control will be done by A
 ## Servo Mapping
 The Servos are mapped for reference as seen below:
 
-![alt text](https://github.com/pdx-robotics/Arduino_KHR-1/blob/semaphore/servo-driver/KHR-1_ServoChannels.png)
+![KHR-1_ServoChannels.png](https://github.com/pdx-robotics/Arduino_KHR-1/blob/feature/semaphore/KHR-1_ServoChannels.png)
 
 | Part | Left | Right|
 |----|:-----:|:----:|
