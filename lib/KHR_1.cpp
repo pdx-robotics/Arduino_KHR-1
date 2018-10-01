@@ -184,37 +184,44 @@ bool KHR_1::semaphore(const std::string & s)
 // const KHR_1::Pose KHR_1::toSemaphorePose(char ch) const
 const KHR_1::Animation KHR_1::toSemaphoreAnimation(char signal) const
 {
-	// WIP Need legs coordinates
 	switch (signal)
 	{
+		case 'A':
 		case 'a':
 		case '1':
 			return {{{-90, 90, 0, 2, 30, -65, 40, -5, -90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'B':
 		case 'b':
 		case '2':
 			return {{{-90, 90, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'C':
 		case 'c':
 		case '3':
 			return {{{-90, 90, 0, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'D':
 		case 'd':
 		case '4':
 			return {{{-90, 90, 0, 2, 30, -65, 40, -5, 90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'E':
 		case 'e':
 		case '5':
 			return {{{90, 45, 0, 2, 30, -65, 40, -5, -90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'F':
 		case 'f':
 		case '6':
 			return {{{0, 0, 0, 2, 30, -65, 40, -5, -90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'G':
 		case 'g':
 		case '7':
 			return {{{-90, 45, 0, 2, 30, -65, 40, -5, -90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'H':
 		case 'h':
 		case '8':
 			return
@@ -224,6 +231,7 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(char signal) const
 				{{0, 90, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, 200}
 			};
 			break;
+		case 'I':
 		case 'i':
 		case '9':
 			return
@@ -233,22 +241,28 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(char signal) const
 				{{0, 90, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, 200}
 			};
 			break;
+		case 'J':
 		case 'j':
 			return {{{0, 0, 0, 2, 30, -65, 40, -5, 90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'K':
 		case 'k':
 		case '0':
 			return {{{90, 90, 0, 2, 30, -65, 40, -5, -90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'L':
 		case 'l':
 			return {{{90, 45, 0, 2, 30, -65, 40, -5, -90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'M':
 		case 'm':
 			return {{{0, 0, 0, 2, 30, -65, 40, -5, -90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'N':
 		case 'n':
 			return {{{-90, 45, 0, 2, 30, -65, 40, -5, -90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'O':
 		case 'o':
 			return
 			{
@@ -257,27 +271,35 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(char signal) const
 				{{0, 90, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, 200}
 			};
 			break;
+		case 'P':
 		case 'p':
 			return {{{90, 90, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'Q':
 		case 'q':
 			return {{{90, 45, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'R':
 		case 'r':
 			return {{{0, 0, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'S':
 		case 's':
 			return {{{-90, 45, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'T':
 		case 't':
 			return {{{90, 90, 0, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'U':
 		case 'u':
 			return {{{90, 45, 0, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'V':
 		case 'v':
 			return {{{-90, 45, 0, 2, 30, -65, 40, -5, 90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'W':
 		case 'w':
 			return
 			{
@@ -286,6 +308,7 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(char signal) const
 				{{0, 0, 0, 2, 30, -65, 40, -5, 0, 90, 0, 2, 30, -65, 40, -5}, 200}
 			};
 			break;
+		case 'X':
 		case 'x':
 			return
 			{
@@ -294,9 +317,11 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(char signal) const
 				{{-90, 45, 0, 2, 30, -65, 40, -5, 0, 90, 0, 2, 30, -65, 40, -5}, 200}
 			};
 			break;
+		case 'Y':
 		case 'y':
 			return {{{0, 0, 0, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
+		case 'Z':
 		case 'z':
 			return
 			{
