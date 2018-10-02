@@ -78,9 +78,11 @@ public:
 	void both_wave();
 	void stand();
 */
-	// Semaphore a string, return false on invalid string
-	// Valid string contains only letters and spaces
-	bool semaphore(const std::string & s);
+	/* Semaphore a string, return false on invalid string
+	 * Valid string contains only letters (upper and lowercase) and spaces
+	 * Optional parameter to disable "Attention" (start) and "Ready to Receive" (end) signals
+	 */
+	bool semaphore(const std::string & s, bool enableStartEndAnimations = true);
 private:
 	static const int default_semaphore_delay = 1000;
 

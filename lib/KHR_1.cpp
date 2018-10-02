@@ -121,7 +121,7 @@ void KHR_1::both_wave()
 */
 
 // Check if string is valid, then semaphore each letter
-bool KHR_1::semaphore(const std::string & s)
+bool KHR_1::semaphore(const std::string & s, bool enableStartEndAnimations)
 {
 	// Check if string is valid
 	for (auto ch : s)
@@ -132,8 +132,12 @@ bool KHR_1::semaphore(const std::string & s)
 		}
 	}
 
-	Serial.print(F("\nSignaling: Attention\n"));
-	animate(toSemaphoreAnimation(SemaphoreSignal::Attention)); // Begin signal
+	if (enableStartEndAnimations)
+	{
+		// Begin signal
+		Serial.print(F("\nSignaling: Attention\n"));
+		animate(toSemaphoreAnimation(SemaphoreSignal::Attention));
+	}
 
 	// Signal if first character is a number
 	if (std::isdigit(s[0]))
@@ -174,9 +178,12 @@ bool KHR_1::semaphore(const std::string & s)
 	Serial.print(F("\n"));
 	animate(toSemaphoreAnimation(s.back()));
 
-	// End signal
-	Serial.print(F("\nSignaling: Ready to Receive\n"));
-	animate(toSemaphoreAnimation(SemaphoreSignal::ReadyToReceive));
+	if (enableStartEndAnimations)
+	{
+		// End signal
+		Serial.print(F("\nSignaling: Ready to Receive\n"));
+		animate(toSemaphoreAnimation(SemaphoreSignal::ReadyToReceive));
+	}
 
 	return true;
 }
