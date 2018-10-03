@@ -33,37 +33,37 @@
 #include <string>
 #include <vector>
 
-// Servo Driver Channels
-#define R_S_PITCH 15
-#define R_S_ROLL  14
-#define R_ELBOW   13
-#define R_H_ROLL  12
-#define R_H_PITCH 11
-#define R_KNEE    10 
-#define R_A_PITCH  9
-#define R_A_ROLL   8
-
-#define L_S_PITCH  0
-#define L_S_ROLL   1
-#define L_ELBOW    2 
-#define L_H_ROLL   3
-#define L_H_PITCH  4
-#define L_KNEE     5
-#define L_A_PITCH  6
-#define L_A_ROLL   7
-
-//#define HEAD      
-
-// Range of values to work with KRS-784 ICS servos
-#define DMAX 530
-#define DMIN 160
-#define FREQ 60
-#define MAP(d) map(d,0,180, DMIN, DMAX)
-#define DWRITE(channel, d) pwm.setPWM(channel,0,MAP(d))
-
 class KHR_1
 {
 public:
+	// Servo Driver Channels
+	static const int R_S_PITCH = 15;
+	static const int R_S_ROLL  = 14;
+	static const int R_ELBOW   = 13;
+	static const int R_H_ROLL  = 12;
+	static const int R_H_PITCH = 11;
+	static const int R_KNEE    = 10;
+	static const int R_A_PITCH = 9;
+	static const int R_A_ROLL  = 8;
+
+	static const int L_S_PITCH = 0;
+	static const int L_S_ROLL  = 1;
+	static const int L_ELBOW   = 2;
+	static const int L_H_ROLL  = 3;
+	static const int L_H_PITCH = 4;
+	static const int L_KNEE    = 5;
+	static const int L_A_PITCH = 6;
+	static const int L_A_ROLL  = 7;
+
+	//static const int HEAD
+
+	// Range of values to work with KRS-784 ICS servos
+	static const int DMAX = 530;
+	static const int DMIN = 160;
+	static const int FREQ = 60;
+	static inline long MAP(long d) { return map(d, 0, 180, DMIN, DMAX); }
+	//static inline DWRITE(channel, d) { pwm.setPWM(channel, 0, MAP(d)); }
+
 	KHR_1();
 	~KHR_1();
 
