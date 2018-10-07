@@ -4,6 +4,9 @@
  *
  * Created by Aaron Chan, April 11, 2018
  *
+ * This prigram is ment to pervide some hardcoded functions 
+ * for simple movements like waveing and standing.
+ *
  * The KHR_1 servo channels have been renumbered for this Arduino
  * implementation. These numbers do not necessarily correspond 
  * with physical pins on the board:
@@ -19,10 +22,9 @@
  * | Ankle Pitch    |  13   |  14   |
  * | Ankle Roll     |  15   |  16   |
  * | Head Pan       |  17   |
- *
- *
 */
-#include "Arduino.h"
+
+//#include "Arduino.h"//Redundant includes. "Arduino.h" is in "KHR_1.h"
 #include "KHR_1.h"
 
 // KHR_1 servos
@@ -48,6 +50,9 @@ VarSpeedServo right_a_roll;
 */
 VarSpeedServo head_pan;
 
+/*
+*Attaches all servo motors to an I/O pin defined in KHR_1.h.
+*/
 void attach_KHR_1(void)
 {
     left_s_pitch.attach(L_S_PITCH);
@@ -73,6 +78,9 @@ void attach_KHR_1(void)
     head_pan.attach(HEAD);
 }
      
+/*
+*Stops all attached servos from pulsing their pins.
+*/
 void detach_KHR_1(void)
 {
     left_s_pitch.detach();
@@ -98,7 +106,9 @@ void detach_KHR_1(void)
     head_pan.detach();
 }
 
-// Wave with left hand
+/*
+* Wave with left hand
+*/
 void left_wave(void)
 {
     left_s_pitch.write(150,50);
@@ -116,11 +126,14 @@ void left_wave(void)
     delay(1000);
 }
 
-// Wave with right hand
+/*
+* Wave with right hand
+*/
 void right_wave(void)
 {
     right_s_pitch.write(30,50);
     right_s_roll.write(160,50);
+  
     delay(1500);
     right_elbow.write(110,70,true);
     right_elbow.write(70,70,true);
@@ -133,6 +146,9 @@ void right_wave(void)
     delay(1000);
 }
 
+/*
+*Wave both hands at the same time.
+*/
 void both_wave()
 {
 	left_s_pitch.write(150,50);

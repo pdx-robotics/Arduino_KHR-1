@@ -20,7 +20,6 @@
  * | Ankle Roll     |  15   |  16   |
  * | Head Pan       |  17   |
  *
- 
 */
 #ifndef KHR_1_h
 #define KHR_1_h
@@ -29,6 +28,11 @@
 #include <VarSpeedServo.h>
 
 // Arduino board pins
+//L - Left
+//R - Right
+//S - Shoulder
+//H - Hip
+//A - Ankle
 #define L_S_PITCH 2
 #define R_S_PITCH 3
 #define L_S_ROLL  4
@@ -56,15 +60,18 @@ void detach_KHR_1(void);
 // Used to demonstrate what certain values do.
 
 // Hardcoded actions
-void left_wave(void);
-void right_wave(void);
-void both_wave();
+void left_wave(void);//Waves left limbs.
+void right_wave(void);//Waves right limbs.
+void both_wave();//Waves both right and left limbs.
+
+/*Not implemented.
 void stand(void);
 void robot_dance(void);
 void cheer(void);
 void flex_arms(void);
+*/
 
-// KHR_1 servos
+// KHR_1 servos 
 extern VarSpeedServo left_s_pitch;
 extern VarSpeedServo left_s_roll;
 extern VarSpeedServo left_elbow;
