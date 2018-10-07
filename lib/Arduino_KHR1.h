@@ -1,8 +1,9 @@
 /* 
- * KHR_1.h - Library to control the 
+ * Arduino_KHR1.h - Library to control the 
  * Kondo KHR_1.
  *
  * Created by Aaron Chan, April 11, 2018
+ * Edited by William Brines, Oct 07, 2018 
  *
  * The KHR_1 servo channels have been renumbered for this Arduino
  * implementation. These numbers do not necessarily correspond 
@@ -33,25 +34,26 @@
 //S - Shoulder
 //H - Hip
 //A - Ankle
+#define R_S_PITCH 1
 #define L_S_PITCH 2
-#define R_S_PITCH 3
+#define R_S_ROLL  3
 #define L_S_ROLL  4
-#define R_S_ROLL  5
+#define R_ELBOW   5
 #define L_ELBOW   6
-#define R_ELBOW   7
+
 /*
-#define L_H_ROLL
-#define R_H_ROLL
-#define L_H_PITCH
-#define R_H_PITCH
-#define L_KNEE
-#define R_KNEE
-#define L_A_PITCH
-#define R_A_PITCH
-#define L_A_ROLL
-#define R_A_ROLL
+#define R_H_ROLL 7
+#define L_H_ROLL 8
+#define R_H_PITCH 9
+#define L_H_PITCH 10
+#define R_KNEE 11
+#define L_KNEE 12
+#define R_A_PITCH 13
+#define L_A_PITCH 14
+#define R_A_ROLL 15
+#define L_A_ROLL 16
 */
-#define HEAD      8
+#define HEAD 8 // 17 when the VarSpeedServo is fixed to have more servos.
 
 // setup functions
 void attach_KHR_1(void);

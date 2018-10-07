@@ -3,7 +3,7 @@
   Date:    7/10/18
   Purpose: Use random number generator to wave arms.
 */
-#include <KHR_1.h>
+#include <Arduino_KHR1.h>
 
 void setup() {
   attach_KHR_1();//Setup pins
