@@ -1,5 +1,5 @@
 /* 
- * KHR_1.h - Library to control the 
+ * Arduino_KHR1.h - Library to control the 
  * Kondo KHR_1.
  *
  * Created by Aaron Chan, April 11, 2018

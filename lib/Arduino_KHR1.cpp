@@ -1,5 +1,5 @@
 /* 
- * KHR_1.cpp - Library to control the 
+ * Arduino_KHR1.cpp - Library to control the 
  * Kondo KHR_1.
  *
  * Created by Aaron Chan, April 11, 2018
@@ -25,7 +25,7 @@
 */
 
 //#include "Arduino.h"//Redundant includes. "Arduino.h" is in "KHR_1.h"
-#include "KHR_1.h"
+#include "Arduino_KHR1.h"
 
 // KHR_1 servos
 VarSpeedServo left_s_pitch;
