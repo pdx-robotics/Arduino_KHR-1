@@ -24,7 +24,7 @@
  * Modified by Aaron Chan, July 28, 2018
  */
 #include "Arduino.h"
-#include "KHR_1.h"
+#include "Arduino_KHR1.h"
 #include <cctype>
 
 KHR_1::KHR_1()

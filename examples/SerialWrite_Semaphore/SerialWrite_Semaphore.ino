@@ -1,7 +1,7 @@
 /*
  * Writes one character at a time to KHR-1.
  */
-#include <KHR_1.h>
+#include <Arduino_KHR1.h>
 #include <iostream>
 
 KHR_1 khr;
