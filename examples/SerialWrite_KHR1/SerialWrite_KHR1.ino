@@ -4,7 +4,7 @@
  * through the Serial Monitor.
  */
 #include <Adafruit_PWMServoDriver.h>
-#include <Arduino_KHR1.h>
+#include <Arduino_KHR-1.h>
 
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 #define FREQ 60

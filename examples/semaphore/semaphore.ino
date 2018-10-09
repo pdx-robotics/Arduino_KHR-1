@@ -1,5 +1,5 @@
 #include <StandardCplusplus.h>
-#include <Arduino_KHR1.h>
+#include <Arduino_KHR-1.h>
 
 KHR_1 khr;
 
