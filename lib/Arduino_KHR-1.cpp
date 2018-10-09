@@ -1,5 +1,5 @@
 /*
- * KHR_1.h - Library to control the Kondo KHR_1.
+ * Arduino_KHR-1.h - Library to control the Kondo KHR_1.
  *
  * The KHR_1 servo channels have been renumbered for this Arduino
  * implementation using the PCA9865 Servo Driver. 
@@ -24,7 +24,7 @@
  * Modified by Aaron Chan, July 28, 2018
  */
 #include "Arduino.h"
-#include "KHR_1.h"
+#include "Arduino_KHR-1.h"
 #include <cctype>
 
 KHR_1::KHR_1()

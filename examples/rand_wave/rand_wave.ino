@@ -2,7 +2,7 @@
 #include <StandardCplusplus.h>
 #include <string>
 #include <locale>
-#include <KHR_1.h>
+#include <Arduin_KHR-1.h>
 
 KHR_1 khr;
 
