@@ -61,8 +61,8 @@ public:
 	static const int DMAX = 530;
 	static const int DMIN = 160;
 	static const int FREQ = 60;
-	static inline long MAP(long d) { return map(d, 0, 180, DMIN, DMAX); }
-	//static inline DWRITE(channel, d) { pwm.setPWM(channel, 0, MAP(d)); }
+
+	static long MAP(long d);
 
 	KHR_1();
 	~KHR_1();
@@ -85,7 +85,7 @@ public:
 	bool semaphore(const std::string & s, bool enableStartEndAnimations = true);
 
 	void zeroPose(); // Set all servos to 0
-	
+
 private:
 	static const int default_semaphore_delay = 1000;
 
@@ -125,7 +125,7 @@ private:
 	void pose(const Pose & pose);
 
     // KHR-1 servo control
-    Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
+    Adafruit_PWMServoDriver pwm;
 };
 
 #endif

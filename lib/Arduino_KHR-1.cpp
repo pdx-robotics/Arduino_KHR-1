@@ -33,6 +33,7 @@ KHR_1::~KHR_1() {}
 
 void KHR_1::init()
 {
+	Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
     pwm.begin();
     pwm.setPWMFreq(FREQ);
     delay(10);
@@ -457,4 +458,9 @@ void KHR_1::animate(const Animation & animation)
 void KHR_1::zeroPose()
 {
 	pose({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+}
+
+long KHR_1::MAP(long d)
+{
+	return map(d, 0, 180, DMIN, DMAX);
 }
