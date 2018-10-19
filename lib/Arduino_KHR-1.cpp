@@ -27,13 +27,9 @@
 #include "Arduino_KHR-1.h"
 #include <cctype>
 
-KHR_1::KHR_1()
-{
-}
+KHR_1::KHR_1() {}
 
-KHR_1::~KHR_1()
-{
-}
+KHR_1::~KHR_1() {}
 
 void KHR_1::init()
 {

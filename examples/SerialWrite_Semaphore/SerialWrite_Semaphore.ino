@@ -9,7 +9,7 @@ std::string c;
 void setup() {
   khr.init();
   Serial.begin(9600);
-  Serial.println("Provide a letter and KHR-1 will translate into Flag Sempahore.");
+  Serial.println("Provide a letter and KHR-1 will translate into Flag Semaphore.");
 }
 
 void loop() {
