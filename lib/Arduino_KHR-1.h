@@ -83,6 +83,9 @@ public:
 	 * Optional parameter to disable "Attention" (start) and "Ready to Receive" (end) signals
 	 */
 	bool semaphore(const std::string & s, bool enableStartEndAnimations = true);
+
+	void zeroPose(); // Set all servos to 0
+	
 private:
 	static const int default_semaphore_delay = 1000;
 

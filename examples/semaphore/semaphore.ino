@@ -10,4 +10,5 @@ void setup() {
 
 void loop() {
 	khr.semaphore("abcdefghijklmnopqrstuvwxyz");
+//  khr.zeroPose();
 }

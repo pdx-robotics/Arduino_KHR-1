@@ -457,3 +457,8 @@ void KHR_1::animate(const Animation & animation)
 		delay(frame.duration);
 	}
 }
+
+void KHR_1::zeroPose()
+{
+	pose({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+}
