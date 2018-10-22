@@ -1,16 +1,24 @@
-// Use random number generator and wave arms
+/*
+  Author:  VRS
+  Date:    7/10/18
+  Purpose: Use random number generator to wave arms.
+*/
+
 #include <StandardCplusplus.h>
 #include <string>
 #include <locale>
-#include <Arduin_KHR-1.h>
+#include <Arduino_KHR-1.h>
 
 KHR_1 khr;
 
 void setup() {
-	khr.attach();
+	khr.init();
 	randomSeed(analogRead(0));
 }
 
+/*
+*Randomly waves arms
+*/
 void loop() {
 	int randnumber = random(0, 6);
 
