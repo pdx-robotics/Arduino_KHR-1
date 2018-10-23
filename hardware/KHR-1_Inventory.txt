@@ -1,0 +1,12 @@
+This list does not include items on the robot.
+list last updated on October 10, 2018
+
+Item - quantity
+- Servos - 7 plastic gear, 2 metal gear, 8 Broken 
+- Servo attachments - 23
+- 6.0V 750mah battery pack - 1
+- 4AA battery pack - 5
+- sonar sensor -2
+- pca9685 servo driver - 1
+- arduino - 1
+- Universal AC adaptor - 1
