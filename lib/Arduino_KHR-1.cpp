@@ -193,46 +193,46 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(char signal) const
 		case 'A':
 		case 'a':
 		case '1':
-			return {{{-90, 90, 0, 2, 30, -65, 40, -5, -90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{-90, 90, 0, -90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'B':
 		case 'b':
 		case '2':
-			return {{{-90, 90, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{-90, 90, 0, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'C':
 		case 'c':
 		case '3':
-			return {{{-90, 90, 0, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{-90, 90, 0, 90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'D':
 		case 'd':
 		case '4':
-			return {{{-90, 90, 0, 2, 30, -65, 40, -5, 90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{-90, 90, 0, 90, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'E':
 		case 'e':
 		case '5':
-			return {{{90, 45, 0, 2, 30, -65, 40, -5, -90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{90, 45, 0, -90, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'F':
 		case 'f':
 		case '6':
-			return {{{0, 0, 0, 2, 30, -65, 40, -5, -90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{0, 0, 0, -90, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'G':
 		case 'g':
 		case '7':
-			return {{{-90, 45, 0, 2, 30, -65, 40, -5, -90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{-90, 45, 0, -90, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'H':
 		case 'h':
 		case '8':
 			return
 			{
-				{{0, 90, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, 400},
-				{{-45, 90, 45, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, default_semaphore_delay},
-				{{0, 90, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, 200}
+				{{0, 90, 0, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 400},
+				{{-45, 90, 45, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay},
+				{{0, 90, 0, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 200}
 			};
 			break;
 		case 'I':
@@ -240,105 +240,105 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(char signal) const
 		case '9':
 			return
 			{
-				{{0, 90, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, 400},
-				{{-45, 90, 45, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay},
-				{{0, 90, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, 200}
+				{{0, 90, 0, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 400},
+				{{-45, 90, 45, 90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay},
+				{{0, 90, 0, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 200}
 			};
 			break;
 		case 'J':
 		case 'j':
-			return {{{0, 0, 0, 2, 30, -65, 40, -5, 90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{0, 0, 0, 90, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'K':
 		case 'k':
 		case '0':
-			return {{{90, 90, 0, 2, 30, -65, 40, -5, -90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{90, 90, 0, -90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'L':
 		case 'l':
-			return {{{90, 45, 0, 2, 30, -65, 40, -5, -90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{90, 45, 0, -90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'M':
 		case 'm':
-			return {{{0, 0, 0, 2, 30, -65, 40, -5, -90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{0, 0, 0, -90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'N':
 		case 'n':
-			return {{{-90, 45, 0, 2, 30, -65, 40, -5, -90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{-90, 45, 0, -90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'O':
 		case 'o':
 			return
 			{
-				{{0, 90, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, 400},
-				{{45, 90, 45, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, default_semaphore_delay},
-				{{0, 90, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, 200}
+				{{0, 90, 0, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 400},
+				{{45, 90, 45, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay},
+				{{0, 90, 0, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 200}
 			};
 			break;
 		case 'P':
 		case 'p':
-			return {{{90, 90, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{90, 90, 0, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'Q':
 		case 'q':
-			return {{{90, 45, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{90, 45, 0, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'R':
 		case 'r':
-			return {{{0, 0, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{0, 0, 0, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'S':
 		case 's':
-			return {{{-90, 45, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{-90, 45, 0, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'T':
 		case 't':
-			return {{{90, 90, 0, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{90, 90, 0, 90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'U':
 		case 'u':
-			return {{{90, 45, 0, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{90, 45, 0, 90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'V':
 		case 'v':
-			return {{{-90, 45, 0, 2, 30, -65, 40, -5, 90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{-90, 45, 0, 90, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'W':
 		case 'w':
 			return
 			{
-				{{0, 0, 0, 2, 30, -65, 40, -5, 0, 90, 0, 2, 30, -65, 40, -5}, 400},
-				{{0, 0, 0, 2, 30, -65, 40, -5, 45, 90, 45, 2, 30, -65, 40, -5}, default_semaphore_delay},
-				{{0, 0, 0, 2, 30, -65, 40, -5, 0, 90, 0, 2, 30, -65, 40, -5}, 200}
+				{{0, 0, 0, 0, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 400},
+				{{0, 0, 0, 45, 90, 45, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay},
+				{{0, 0, 0, 0, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 200}
 			};
 			break;
 		case 'X':
 		case 'x':
 			return
 			{
-				{{-90, 45, 0, 2, 30, -65, 40, -5, 0, 90, 0, 2, 30, -65, 40, -5}, 400},
-				{{-90, 45, 0, 2, 30, -65, 40, -5, 45, 90, 45, 2, 30, -65, 40, -5}, default_semaphore_delay},
-				{{-90, 45, 0, 2, 30, -65, 40, -5, 0, 90, 0, 2, 30, -65, 40, -5}, 200}
+				{{-90, 45, 0, 0, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 400},
+				{{-90, 45, 0, 45, 90, 45, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay},
+				{{-90, 45, 0, 0, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 200}
 			};
 			break;
 		case 'Y':
 		case 'y':
-			return {{{0, 0, 0, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{0, 0, 0, 90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case 'Z':
 		case 'z':
 			return
 			{
-				{{0, 0, 0, 2, 30, -65, 40, -5, 0, 90, 0, 2, 30, -65, 40, -5}, 400},
-				{{0, 0, 0, 2, 30, -65, 40, -5, -45, 90, 45, 2, 30, -65, 40, -5}, default_semaphore_delay},
-				{{0, 0, 0, 2, 30, -65, 40, -5, 0, 90, 0, 2, 30, -65, 40, -5}, 200}
+				{{0, 0, 0, 0, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 400},
+				{{0, 0, 0, -45, 90, 45, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay},
+				{{0, 0, 0, 0, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 200}
 			};
 			break;
 		case ' ':
-			return {{{-90, 90, 0, 2, 30, -65, 40, -5, -90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{-90, 90, 0, -90, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		default:
-			return {{{0, 0, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, 0}};
+			return {{{0, 0, 0, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 0}};
 			break;
 	}
 }
@@ -350,38 +350,38 @@ const KHR_1::Animation KHR_1::toSemaphoreAnimation(KHR_1::SemaphoreSignal signal
 		case SemaphoreSignal::Attention:
 			return
 			{
-				{{90, 45, 0, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, 400},
-				{{-90, 45, 0, 2, 30, -65, 40, -5, -90, 45, 0, 2, 30, -65, 40, -5}, 400},
-				{{90, 45, 0, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, 400},
-				{{-90, 45, 0, 2, 30, -65, 40, -5, -90, 45, 0, 2, 30, -65, 40, -5}, 400},
-				{{90, 45, 0, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, 400},
-				{{-90, 45, 0, 2, 30, -65, 40, -5, -90, 45, 0, 2, 30, -65, 40, -5}, 400}
+				{{90, 45, 0, 90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 400},
+				{{-90, 45, 0, -90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 400},
+				{{90, 45, 0, 90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 400},
+				{{-90, 45, 0, -90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 400},
+				{{90, 45, 0, 90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 400},
+				{{-90, 45, 0, -90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 400}
 			};
 			break;
 		case SemaphoreSignal::ReadyToReceive:
 			return
 			{
-				{{90, 90, 0, 2, 30, -65, 40, -5, 90, 90, 0, 2, 30, -65, 40, -5}, 500},
-				{{-90, 90, 0, 2, 30, -65, 40, -5, -90, 90, 0, 2, 30, -65, 40, -5}, 500}
+				{{90, 90, 0, 90, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 500},
+				{{-90, 90, 0, -90, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 500}
 			};
 			break;
 		case SemaphoreSignal::LettersToFollow:
 			return toSemaphoreAnimation('j');
 			break;
 		case SemaphoreSignal::NumbersToFollow:
-			return {{{90, 45, 0, 2, 30, -65, 40, -5, 90, 90, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{90, 45, 0, 90, 90, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case SemaphoreSignal::Rest:
 			return toSemaphoreAnimation(' ');
 			break;
 		case SemaphoreSignal::Cancel:
-			return {{{-90, 45, 0, 2, 30, -65, 40, -5, 90, 45, 0, 2, 30, -65, 40, -5}, default_semaphore_delay}};
+			return {{{-90, 45, 0, 90, 45, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, default_semaphore_delay}};
 			break;
 		case SemaphoreSignal::BetweenSameLetters:
-			return {{{0, 90, 45, 2, 30, -65, 40, -5, 0, 90, 45, 2, 30, -65, 40, -5}, 200}};
+			return {{{0, 90, 45, 0, 90, 45, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 200}};
 			break;
 		default:
-			return {{{0, 0, 0, 2, 30, -65, 40, -5, 0, 0, 0, 2, 30, -65, 40, -5}, 0}};
+			return {{{0, 0, 0, 0, 0, 0, 2, 30, -65, 40, -5, 2, 30, -65, 40, -5}, 0}};
 			break;
 	}
 }
@@ -392,15 +392,17 @@ void KHR_1::pose(const KHR_1::Pose & pose)
 	pwm.setPWM(L_S_PITCH, 0, MAP(pose.left_s_pitch_angle + 90));
 	pwm.setPWM(L_S_ROLL, 0, MAP(- pose.left_s_roll_angle + 90));
 	pwm.setPWM(L_ELBOW, 0, MAP(- pose.left_elbow_angle + 90));
+
+	pwm.setPWM(R_S_PITCH, 0, MAP(- pose.right_s_pitch_angle + 90));
+	pwm.setPWM(R_S_ROLL, 0, MAP(pose.right_s_roll_angle + 90));
+	pwm.setPWM(R_ELBOW, 0, MAP(pose.right_elbow_angle + 90));
+	
 	pwm.setPWM(L_H_ROLL, 0, MAP(- pose.left_h_roll_angle + 90));
 	pwm.setPWM(L_H_PITCH, 0, MAP(- pose.left_h_pitch_angle + 90));
 	pwm.setPWM(L_KNEE, 0, MAP(pose.left_knee_angle + 90));
 	pwm.setPWM(L_A_PITCH, 0, MAP(pose.left_a_pitch_angle + 90));
 	pwm.setPWM(L_A_ROLL, 0, MAP(pose.left_a_roll_angle + 90));
 
-	pwm.setPWM(R_S_PITCH, 0, MAP(- pose.right_s_pitch_angle + 90));
-	pwm.setPWM(R_S_ROLL, 0, MAP(pose.right_s_roll_angle + 90));
-	pwm.setPWM(R_ELBOW, 0, MAP(pose.right_elbow_angle + 90));
 	pwm.setPWM(R_H_ROLL, 0, MAP(pose.right_h_roll_angle + 90));
 	pwm.setPWM(R_H_PITCH, 0, MAP(pose.right_h_pitch_angle + 90));
 	pwm.setPWM(R_KNEE, 0, MAP(- pose.right_knee_angle + 90));
@@ -419,6 +421,14 @@ void KHR_1::animate(const Animation & animation)
 		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.left_elbow_angle));
 		Serial.print(F(", "));
+
+		Serial.print(static_cast<int>(frame.pose.right_s_pitch_angle));
+		Serial.print(F(", "));
+		Serial.print(static_cast<int>(frame.pose.right_s_roll_angle));
+		Serial.print(F(", "));
+		Serial.print(static_cast<int>(frame.pose.right_elbow_angle));
+		Serial.print(F(", "));
+		
 		Serial.print(static_cast<int>(frame.pose.left_h_roll_angle));
 		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.left_h_pitch_angle));
@@ -430,12 +440,6 @@ void KHR_1::animate(const Animation & animation)
 		Serial.print(static_cast<int>(frame.pose.left_a_roll_angle));
 		Serial.print(F(", "));
 
-		Serial.print(static_cast<int>(frame.pose.right_s_pitch_angle));
-		Serial.print(F(", "));
-		Serial.print(static_cast<int>(frame.pose.right_s_roll_angle));
-		Serial.print(F(", "));
-		Serial.print(static_cast<int>(frame.pose.right_elbow_angle));
-		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.right_h_roll_angle));
 		Serial.print(F(", "));
 		Serial.print(static_cast<int>(frame.pose.right_h_pitch_angle));
