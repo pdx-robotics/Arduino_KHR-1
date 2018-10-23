@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.1.0">
+<eagle version="9.1.3">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -2076,6 +2076,28 @@ W = angled&lt;p&gt;
 <text x="-109.22" y="-63.5" size="1.778" layer="91" rot="R180">A_ROLL</text>
 <text x="-45.72" y="43.18" size="1.778" layer="91">HEAD</text>
 <text x="-116.84" y="38.1" size="1.778" layer="91">HEAD</text>
+<text x="2.54" y="91.44" size="1.778" layer="97">Extra Pins For
+Additional Hardware</text>
+<wire x1="-5.08" y1="88.9" x2="48.26" y2="88.9" width="1.27" layer="97"/>
+<wire x1="48.26" y1="88.9" x2="48.26" y2="-68.58" width="1.27" layer="97"/>
+<wire x1="48.26" y1="-68.58" x2="-5.08" y2="-68.58" width="1.27" layer="97"/>
+<wire x1="-5.08" y1="-68.58" x2="-5.08" y2="88.9" width="1.27" layer="97"/>
+<wire x1="-55.88" y1="88.9" x2="-55.88" y2="55.88" width="1.27" layer="97"/>
+<wire x1="-55.88" y1="55.88" x2="-35.56" y2="55.88" width="1.27" layer="97"/>
+<wire x1="-35.56" y1="55.88" x2="-35.56" y2="88.9" width="1.27" layer="97"/>
+<wire x1="-35.56" y1="88.9" x2="-55.88" y2="88.9" width="1.27" layer="97"/>
+<text x="-55.88" y="91.44" size="1.778" layer="97">Arduino
+Pin Output</text>
+<wire x1="-124.46" y1="83.82" x2="-124.46" y2="55.88" width="1.27" layer="97"/>
+<wire x1="-124.46" y1="55.88" x2="-101.6" y2="55.88" width="1.27" layer="97"/>
+<wire x1="-101.6" y1="55.88" x2="-101.6" y2="83.82" width="1.27" layer="97"/>
+<wire x1="-101.6" y1="83.82" x2="-124.46" y2="83.82" width="1.27" layer="97"/>
+<wire x1="-124.46" y1="53.34" x2="-33.02" y2="53.34" width="1.27" layer="97"/>
+<wire x1="-33.02" y1="53.34" x2="-33.02" y2="-88.9" width="1.27" layer="97"/>
+<wire x1="-33.02" y1="-88.9" x2="-124.46" y2="-88.9" width="1.27" layer="97"/>
+<wire x1="-124.46" y1="-88.9" x2="-124.46" y2="53.34" width="1.27" layer="97"/>
+<text x="-124.46" y="86.36" size="1.778" layer="97">Servo Power</text>
+<text x="-99.06" y="55.88" size="1.778" layer="97">Servo Pin Out</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="-139.7" y="-109.22"/>
@@ -2730,6 +2752,10 @@ W = angled&lt;p&gt;
 </schematic>
 </drawing>
 <compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
 <note version="8.2" severity="warning">
 Since Version 8.2, EAGLE supports online libraries. The ids
 of those online libraries will not be understood (or retained)
