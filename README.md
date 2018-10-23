@@ -13,19 +13,19 @@ We will not be using the RCB-1 for this project. Servo Control will be done by A
 ## Servo Mapping
 The Servos are mapped for reference as seen below:
 
-![alt text](https://github.com/pdx-robotics/Arduino_KHR-1/blob/master/KHR-1_servonumbering_modified.png)
+![KHR-1_ServoChannels.png](https://github.com/pdx-robotics/Arduino_KHR-1/blob/feature/semaphore/KHR-1_ServoChannels.png)
 
-| Part | Right | Left |
+| Part | Left | Right|
 |----|:-----:|:----:|
-| Shoulder Pitch | 1  | 2  |
-| Shoulder Roll  | 3  | 4  |
-| Elbow          | 5  | 6  | 
-| Hip Roll       | 7  | 8  |
-| Hip Pitch      | 9  | 10 |
-| Knee           | 11 | 12 |
-| Ankle Pitch    | 13 | 14 | 
-| Ankle Roll     | 15 | 16 |
-| Head Pan       | 17 |
+| Shoulder Pitch |   0   |  15   |
+| Shoulder Roll  |   1   |  14   |
+| Elbow          |   2   |  13   |
+| Hip Roll       |   3   |  12   |
+| Hip Pitch      |   4   |  11   |
+| Knee           |   5   |  10   |
+| Ankle Pitch    |   6   |   9   |
+| Ankle Roll     |   7   |   8   |
+| Head Pan       |  ???  |
 
 ### Part Terminology
 
